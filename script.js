@@ -11,7 +11,11 @@ var game_loop_interval;
 var time_progress_width = 0;
 var can_place = false;
 var game_running = false;
+var acab_pattern = [1, 3, 1, 2];
+var acab_progress = 0;
 var number_occurences = {};
+var bomber_tagger = {1:"B", 2:"o", 3:"m", 4:"b", 5:"e", 6:"r", 7:"_", 8:"T", 9:"A", 10:"G", 11:"g", 12:"E", 13:"R"};
+var bomber_tagger_enabled = false;
 
 function init() {
     grid_buttons = document.getElementsByClassName("button");
@@ -67,7 +71,11 @@ function newNumber() {
         current_number = getRndInteger(1, 13);
         console.log(number_occurences[current_number]);
         if(number_occurences[current_number] < 4 || number_occurences[current_number] == undefined) {
-            number_display.innerHTML = current_number;
+            if(bomber_tagger_enabled) {
+                number_display.innerHTML = toBomberTagger(current_number);
+            } else {
+                number_display.innerHTML = current_number;
+            }
             remaining_numbers--;
             remaining_display.innerHTML = "Zbývá čísel: " + remaining_numbers;
             can_place = true;
@@ -103,8 +111,35 @@ function speedChanged(new_speed) {
 }
 
 function gridBtClick() {
+    if(this.id == acab_pattern[acab_progress] && !game_running) {
+        acab_progress++;
+    } else {
+        acab_progress = 0;
+    }
+    if(acab_progress == 4) {
+        if(bomber_tagger_enabled) {
+            bomber_tagger_enabled = false;
+            window.alert("Bomber tagger disabled!");
+        } else {
+            bomber_tagger_enabled = true;
+            window.alert("Bomber tagger enabled!");
+        }
+        acab_progress = 0;
+    }
     if(this.innerHTML == "" && can_place) {
-        this.innerHTML = current_number;
+        if(bomber_tagger_enabled) {
+            this.innerHTML = toBomberTagger(current_number);
+        } else {
+            this.innerHTML = current_number;
+        }
         can_place = false;
     }
+}
+
+function toBomberTagger(number) {
+    return bomber_tagger[number];
+}
+
+function fromBomberTagger(letter) {
+    return parseInt(Object.keys(bomber_tagger).find(key => bomber_tagger[key] == letter));
 }

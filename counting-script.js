@@ -73,7 +73,11 @@ function countPostupky(number_strings) {
     var numbers = [];
     var postupka_len = 1;
     number_strings.forEach(item => {
-        numbers.push(parseInt(item));
+        if(bomber_tagger_enabled) {
+            numbers.push(parseInt(fromBomberTagger(item)));
+        } else {
+            numbers.push(parseInt(item));
+        }
     });
 
     numbers.sort((a, b) => a - b);
