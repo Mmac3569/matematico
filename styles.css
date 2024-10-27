@@ -1,0 +1,147 @@
+.button {
+    background-color: #00aaff;
+    height: 60px;
+    width: 60px;
+    border: none;
+    color: white;
+    padding: 0 0 0 0;
+    font-size: xx-large;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.counting-square {
+    background-color: white;
+    height: 60px;
+    width: 60px;
+    border: none;
+    color: black;
+    padding: 0 0 0 0;
+    font-size: xx-large;
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #009be8;
+}
+
+#flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+article {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 100px;
+}
+
+#number-display {
+    font-size: 50px;
+    margin-bottom: 16px;
+    margin-top: 10px;
+}
+
+#number-display-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 3%;
+}
+
+table {
+    margin: 1%;
+    width: auto;
+    height: auto;
+}
+
+#time-display {
+    background-color: lightgray;
+    height: 20px;
+    width: 200px;
+    margin: 3px;
+    border-style: none;
+}
+
+#time-progress {
+    background-color: orange;
+    height: 20px;
+    border-style: none;
+    width: 0px;
+}
+
+#game-control {
+    margin: 3%;
+}
+
+.control-button {
+    background-color: #00aaff;
+    border: none;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#slow {
+    margin-top: 5px;
+}
+
+#end {
+    margin-left: 20px;
+}
+
+header {
+    background-color: #00aaff;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+nav {
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+body {
+    margin: 0 0 0 0;
+}
+
+#rules {
+    color: black;
+}
+
+#counting {
+    margin-left: 150px;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.combination {
+    padding-right: 50px;
+}
+
+#counting-table {
+    font-size: larger;
+    padding-left: 30%;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+p {
+    font-size: 16px;
+}
