@@ -78,7 +78,9 @@ function countPostupky(number_strings) {
 
     numbers.sort((a, b) => a - b);
     for (let i = 1; i < numbers.length; i++) {
-        if (numbers[i] !== numbers[i - 1] + 1) {
+        if(numbers[i] == numbers[i - 1]) {
+            continue;
+        } else if (numbers[i] !== numbers[i - 1] + 1) {
             if(postupka_len > 2) {
                 break;
             } else {

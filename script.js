@@ -3,12 +3,14 @@ var counting_squares = document.getElementsByClassName("counting-square");
 var number_display = document.getElementById("number-display");
 var remaining_display = document.getElementById("remaining-display");
 var time_progress = document.getElementById("time-progress");
+var startBt = document.getElementById("start");
 var speed = 5;
 var remaining_numbers = 25;
 var current_number = 0;
 var game_loop_interval;
 var time_progress_width = 0;
 var can_place = false;
+var game_running = false;
 var number_occurences = {};
 
 function init() {
@@ -22,6 +24,7 @@ function init() {
     current_number = 10;
     time_progress_width = 0;
     can_place = false;
+    game_running = false;
     for(i = 0; i < grid_buttons.length; i++) {
         grid_buttons[i].addEventListener("click", gridBtClick);
         grid_buttons[i].id = i;
@@ -32,6 +35,9 @@ function init() {
 }
 
 function startBtClick() {
+    if (game_running) {
+        return 0;
+    }
     for(i = 0; i < grid_buttons.length; i++) {
         grid_buttons[i].innerHTML = "";
     }
@@ -41,14 +47,19 @@ function startBtClick() {
     remaining_numbers = 25;
     newNumber();
     game_loop_interval = window.setInterval(gameLoop, speed * 10);
+    game_running = true;
 }
 
 function endBtClick() {
+    if(!game_running) {
+        return 0;
+    }
     window.clearInterval(game_loop_interval);
     can_place = false;
     time_progress_width = 0;
     time_progress.style.width = time_progress_width + "px";
     number_display.innerHTML = calculateScore();
+    game_running = false;
 }
 
 function newNumber() {
