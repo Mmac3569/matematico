@@ -29,6 +29,11 @@ function init() {
     time_progress_width = 0;
     can_place = false;
     game_running = false;
+    acab_pattern = [1, 3, 1, 2];
+    acab_progress = 0;
+    number_occurences = {};
+    bomber_tagger = {1:"B", 2:"o", 3:"m", 4:"b", 5:"e", 6:"r", 7:"_", 8:"T", 9:"A", 10:"G", 11:"g", 12:"E", 13:"R"};
+    bomber_tagger_enabled = false;
     for(i = 0; i < grid_buttons.length; i++) {
         grid_buttons[i].addEventListener("click", gridBtClick);
         grid_buttons[i].id = i;
