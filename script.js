@@ -93,6 +93,7 @@ function newNumber() {
         window.clearInterval(game_loop_interval);
         can_place = false;
         number_display.innerHTML = calculateScore();
+        game_running = false;
     }
 }
 
