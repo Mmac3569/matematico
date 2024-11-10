@@ -8,8 +8,10 @@
     <script src="login-script.js"></script>
 </head>
 <body>
-    Username: <input id="username_in" type="text" placeholder="username"><br>
-    Password: <input id="password_in" type="text" placeholder="password"><br>
-    <button id="loginBt" onclick="loginBtClick()">login</button>
+    <form>
+        <input id="username_in" name="username" type="text" placeholder="username"><br>
+        <input id="password_in" name= "password" type="password" placeholder="password"><br>
+        <input type="button" value="login" onclick="loginBtClick()">
+    </form>
 </body>
 </html>

@@ -6,9 +6,9 @@ function loginBtClick() {
     getValues();
     fetch(`http://matematicodb.free.nf/matematicodb/index.php/login?username=${username_input}&password=${password_input}`, {
         headers: {
-            "Accept": "application/json, text/html, */*",
+            "Accept": "text/html, */*",
         }
-    }).then(response => response.json()).then(data => console.log(data)).catch(error => console.error(error));
+    });
 }
 
 function getValues() {
