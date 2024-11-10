@@ -4,7 +4,7 @@ var response;
 
 function loginBtClick() {
     getValues();
-    fetch(`http://matematicodb.free.nf/matematicodb/index.php/login?username=${username_input}&password=${password_input}`, {
+    fetch(`http://matematico.great-site.net/matematicodb/index.php/login?username=${username_input}&password=${password_input}`, {
         headers: {
             "Accept": "text/html, */*",
         }

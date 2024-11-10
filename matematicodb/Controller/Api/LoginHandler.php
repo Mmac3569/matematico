@@ -6,15 +6,13 @@ class LoginHandler {
         $database = new Database();
         $username = $query["username"];
         $password = $query["password"];
-        //header("Content-Type: application/json");
+        header("Content-Type: application/json");
         if($database->select("SELECT * FROM `users` WHERE `username`='" . $username . "' && `password`='" . $password . "'")) {
             header("HTTP/1.1 200 OK");
-            header("Location: http://matematicodb.free.nf");
-            echo "success";
+            echo json_encode("success");
         } else {
-            header("HTTP/1.1 301 Failed");
-            header("Location: http://matematicodb.free.nf/login");
-            echo "fail";
+            header("HTTP/1.1 300 Failed");
+            echo json_encode("fail");
         }
         exit;
     }
