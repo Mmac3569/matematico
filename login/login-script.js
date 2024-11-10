@@ -6,7 +6,7 @@ function loginBtClick() {
     getValues();
     fetch(`http://matematico.great-site.net/matematicodb/index.php/login?username=${username_input}&password=${password_input}`, {
         headers: {
-            "Accept": "text/html, */*",
+            "Accept": "application/json, text/html, */*",
         }
     });
 }
