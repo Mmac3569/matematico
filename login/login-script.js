@@ -4,7 +4,7 @@ var response;
 
 function loginBtClick() {
     //funny comment just for testing
-    alert("test #3");
+    alert("test #4");
     getValues();
     fetch(`http://matematico.great-site.net/matematicodb/index.php/login?username=${username_input}&password=${password_input}`, {
         headers: {
