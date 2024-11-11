@@ -9,8 +9,8 @@
 </head>
 <body>
     <form>
-        <input id="username_in" name="username" type="text" placeholder="username"><br>
-        <input id="password_in" name= "password" type="password" placeholder="password"><br>
+        <input id="username_in" name="username" type="text" placeholder="username" autocomplete="username"><br>
+        <input id="password_in" name= "password" type="password" placeholder="password" autocomplete="current-password"><br>
         <input type="button" value="login" onclick="loginBtClick()">
     </form>
 </body>
