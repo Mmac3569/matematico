@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Matematico online</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="http://matematico.great-site.net/script.js?v=<?php echo filemtime("login-script.js") ?>"></script>
-    <script src="http://matematico.great-site.net/counting-script.js?v=<?php echo filemtime("login-script.js") ?>"></script>
+    <script src="http://matematico.great-site.net/script.js?v=<?php //echo filemtime("login-script.js") ?>"></script>
+    <script src="http://matematico.great-site.net/counting-script.js?v=<?php //echo filemtime("login-script.js") ?>"></script>
 </head>
 <body onload="init()">
     <header>
