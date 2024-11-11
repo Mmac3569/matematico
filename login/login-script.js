@@ -2,15 +2,18 @@ var username_input;
 var password_input;
 var response;
 
-function loginBtClick() {
-    //funny comment just for testing
-    alert("test #5");
+async function loginBtClick() {
     getValues();
-    fetch(`http://matematico.great-site.net/matematicodb/index.php/login?username=${username_input}&password=${password_input}`, {
+    var response = await fetch(`http://matematico.great-site.net/matematicodb/index.php/login?username=${username_input}&password=${password_input}`, {
         headers: {
             "Accept": "application/json, text/html, */*",
         }
     });
+    if(response.ok) {
+        window.location.href = "http://matematico.great-site.net";
+    } else {
+        alert("Invalid password or username");
+    }
 }
 
 function getValues() {
