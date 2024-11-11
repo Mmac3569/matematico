@@ -39,7 +39,7 @@ article {
     margin-top: 100px;
 }
 
-#number-display {
+.number-display {
     font-size: 50px;
     margin-bottom: 16px;
     margin-top: 10px;

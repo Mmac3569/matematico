@@ -20,10 +20,12 @@
     <div id="flex-container">
         <div id="number-display-container">
             <label id="remaining-display">Zbývá čísel: 25</label>
-            <label id="number-display">0</label>
+            <label class="number-display" id="number-display">0</label>
             <div id="time-display">
                 <div id="time-progress"></div>
             </div>
+            <label id="high-score-label">Zbývá čísel: 25</label>
+            <label class="number-display" id="high-score-display">0</label>
         </div>
 
         <table>
