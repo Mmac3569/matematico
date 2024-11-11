@@ -24,7 +24,7 @@
             <div id="time-display">
                 <div id="time-progress"></div>
             </div>
-            <label id="high-score-label">Zbývá čísel: 25</label>
+            <label id="high-score-label">Nejvyšší skóre:</label>
             <label class="number-display" id="high-score-display">0</label>
         </div>
 
