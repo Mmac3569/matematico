@@ -125,6 +125,11 @@ body {
     color: black;
 }
 
+#login {
+    margin-left: 150px;
+    color: black;
+}
+
 a {
     text-decoration: none;
 }
@@ -147,5 +152,5 @@ p {
 }
 
 #high-score-label {
-    margin-top: 16px;
+    margin-top: 32px;
 }

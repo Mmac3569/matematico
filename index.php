@@ -15,6 +15,7 @@
     <nav>
         <a href="#rules-header"><h2 id="rules">pravidla</h2></a>
         <a href="#counting-header"><h2 id="counting">bodování</h2></a>
+        <a href="/login"><h2 id="login">přihlásit se</h2></a>
     </nav>
 
     <div id="flex-container">
