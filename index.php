@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matematico online</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="http://matematico.great-site.net/script.js"></script>
-    <script src="http://matematico.great-site.net/counting-script.js"></script>
+    <script src="http://matematico.great-site.net/script.js?t=<?php echo time() ?>"></script>
+    <script src="http://matematico.great-site.net/counting-script.js?t=<?php echo time() ?>"></script>
 </head>
 <body onload="init()">
     <header>
