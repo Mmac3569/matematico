@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matematico online</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="http://matematico.great-site.net/script.js?v=<?php echo filemtime("script.js") ?>"></script>
-    <script src="http://matematico.great-site.net/counting-script.js?v=<?php echo filemtime("counting-script.js") ?>"></script>
+    <link rel="stylesheet" href="styles.css?v=<?php echo filemtime("styles.css") ?>">
+    <script src="script.js?v=<?php echo filemtime("script.js") ?>"></script>
+    <script src="counting-script.js?v=<?php echo filemtime("counting-script.js") ?>"></script>
 </head>
 <body onload="init()">
     <header>

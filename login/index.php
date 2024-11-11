@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matematico - login</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="http://matematico.great-site.net/login/login-script.js?v=<?php echo filemtime("login-script.js") ?>"></script>
+    <link rel="stylesheet" href="styles.css?v=<?php echo filemtime("styles.css") ?>">
+    <script src="login-script.js?v=<?php echo filemtime("login-script.js") ?>"></script>
 </head>
 <body>
     <form>
