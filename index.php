@@ -101,8 +101,7 @@
     <article>
         <h3 id="rules-header">pravidla hry matematico</h3><br>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque cumque officia natus ad quasi incidunt commodi numquam non delectus dolorum, quidem saepe deserunt suscipit pariatur autem aut tenetur minima? Velit?
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit veniam, dignissimos voluptas quo corrupti in ea minus doloribus qui! Quaerat labore optio enim harum a possimus exercitationem quisquam cumque quos.
+            Matematico je logická hra, kde dosazujete náhodně vylosované číslice do 5x5 tabulky tak, abyste získali v řádku, sloupci, nebo v nejdelší diagonále nějakou z kombinací níže. Na konci hry se sečtou body za všechny řádky, sloupce a diagonály, výsledkem je celkové skóre. Pokud se přihlásíte (nebo zaregistrujete), bude se vám ukládat vaše nejvyšší skóre, které se můžete snažit překonat. Tato stránka původně měla sloužit pouze jako náhrada za již neexistující stránku matematico.cz, avšak plánuji na stránku přidávat nové funkce, jako například multiplayer, možnost změny stylu a další.
         </p><br>
         <h3 id="counting-header">bodování</h3><br>
         <table id="counting-table">
