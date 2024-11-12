@@ -16,6 +16,7 @@
         <input id="new_username_in" name="username" type="text" placeholder="new username" autocomplete="username"><br>
         <input id="new_password_in" name= "password" type="password" placeholder="new password" autocomplete="new-password"><br>
         <input type="button" value="register" onclick="registerBtClick()">
+        <p style="color: red;">Stránka zatím není příliš zabezpečená, volte prosím heslo které nepoužíváte do jiných účtů!!!</p>
     </form>
 </body>
 </html>
