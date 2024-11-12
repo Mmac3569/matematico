@@ -3,7 +3,7 @@ var counting_squares = document.getElementsByClassName("counting-square");
 var number_display = document.getElementById("number-display");
 var remaining_display = document.getElementById("remaining-display");
 var time_progress = document.getElementById("time-progress");
-var startBt = document.getElementById("start");
+var high_score_display = document.getElementById("high-score-display");
 var speed = 5;
 var remaining_numbers = 25;
 var current_number = 0;
@@ -23,6 +23,7 @@ function init() {
     number_display = document.getElementById("number-display");
     remaining_display = document.getElementById("remaining-display");
     time_progress = document.getElementById("time-progress");
+    high_score_display = document.getElementById("high-score-display");
     speed = 5;
     remaining_numbers = 25;
     current_number = 10;
@@ -41,6 +42,7 @@ function init() {
     for(i = 0; i < counting_squares.length; i++) {
         counting_squares[i].id = "c" + i;
     }
+    new user().displayHighScore();
 }
 
 function startBtClick() {

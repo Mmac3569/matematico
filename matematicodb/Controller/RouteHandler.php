@@ -9,6 +9,10 @@ class RouteHandler {
                 $login_handler = new LoginHandler();
                 $login_handler->login();
                 break;
+            case "high-score":
+                require_once ROOT_PATH . "/Controller/Api/HighScoreHandler.php";
+                $high_score_handler = new HighScoreHandler();
+                $high_score_handler->getHighScore();
             default:
                 header("HTTP/1.1 404 Not Found");
                 echo "Not found";

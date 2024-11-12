@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css?v=<?php echo filemtime("styles.css") ?>">
     <script src="script.js?v=<?php echo filemtime("script.js") ?>"></script>
     <script src="counting-script.js?v=<?php echo filemtime("counting-script.js") ?>"></script>
+    <script src="user-script.js?v=<?php echo filemtime("user-script.js") ?>"></script>
 </head>
 <body onload="init()">
     <header>
