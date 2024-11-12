@@ -12,7 +12,11 @@ class RouteHandler {
             case "high-score":
                 require_once ROOT_PATH . "/Controller/Api/HighScoreHandler.php";
                 $high_score_handler = new HighScoreHandler();
-                $high_score_handler->getHighScore();
+                if($uri[4] == "get") {
+                    $high_score_handler->getHighScore();
+                } elseif ($uri[4] == "set") {
+                    $high_score_handler->setHighScore();
+                }
             default:
                 header("HTTP/1.1 404 Not Found");
                 echo "Not found";

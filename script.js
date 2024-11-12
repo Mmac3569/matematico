@@ -42,7 +42,7 @@ function init() {
     for(i = 0; i < counting_squares.length; i++) {
         counting_squares[i].id = "c" + i;
     }
-    new user().displayHighScore();
+    displayHighScore();
 }
 
 function startBtClick() {

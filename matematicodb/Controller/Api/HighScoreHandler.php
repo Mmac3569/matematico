@@ -16,4 +16,19 @@ class HighScoreHandler {
         }
         exit;
     }
+
+    function setHighScore() {
+        parse_str($_SERVER['QUERY_STRING'], $query);
+        $database = new Database();
+        $id = $query["id"];
+        $value = $query["value"];
+        header("Content-Type: application/json");
+        $db_query = $database->executeStatement("UPDATE `users` SET `high-score` = '" . $value . "' WHERE `users`.`ID`=" . $id);
+        if($db_query) {
+            header("HTTP/1.1 200 OK");
+        } else {
+            header("HTTP/1.1 300 Failed");
+        }
+        exit;
+    }
 }
