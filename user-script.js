@@ -6,12 +6,10 @@ async function displayHighScore() {
     let response = await fetch("http://matematico.great-site.net/matematicodb/index.php/high-score/get?id=" + user_id);
     let json = await response.json();
     if (response.ok) {
-        console.log(json[0]["high-score"]);
         high_score_display.innerHTML = json[0]["high-score"];
+        document.getElementById("high-score-label").hidden = false;
+        document.getElementById("high-score-display").hidden = false;
         logged_in = true;
-    } else {
-        document.getElementById("high-score-label").hidden = true;
-        document.getElementById("high-score-display").hidden = true;
     }
 }
 

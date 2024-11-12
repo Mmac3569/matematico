@@ -26,8 +26,8 @@
             <div id="time-display">
                 <div id="time-progress"></div>
             </div>
-            <label id="high-score-label">Nejvyšší skóre:</label>
-            <label class="number-display" id="high-score-display">0</label>
+            <label id="high-score-label" hidden>Nejvyšší skóre:</label>
+            <label class="number-display" id="high-score-display" hidden>0</label>
         </div>
 
         <table>
