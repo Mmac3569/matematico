@@ -1,3 +1,4 @@
+var logged_in = false;
 
 async function displayHighScore() {
     let query_string = window.location.search;
@@ -7,6 +8,7 @@ async function displayHighScore() {
     if (response.ok) {
         console.log(json[0]["high-score"]);
         high_score_display.innerHTML = json[0]["high-score"];
+        logged_in = true;
     }
 }
 
@@ -14,4 +16,5 @@ async function setHighScore(value) {
     let query_string = window.location.search;
     let user_id = new URLSearchParams(query_string).get("id");
     await fetch("http://matematico.great-site.net/matematicodb/index.php/high-score/set?id=" + user_id + "&value=" + value);
+    high_score_display.innerHTML = value;
 }

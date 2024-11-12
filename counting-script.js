@@ -15,6 +15,10 @@ function calculateScore() {
     document.getElementById("c" + 11).innerHTML = countPairs(first_diagonal) + countPostupky(first_diagonal);
     score += countPairs(second_diagonal) + countPostupky(second_diagonal);
     document.getElementById("c" + 5).innerHTML = countPairs(second_diagonal) + countPostupky(second_diagonal);
+    if (logged_in && score > parseInt(high_score_display.innerHTML)) {
+        setHighScore(score);
+        alert("Nové nejvyšší skóre! (" + score + ")");
+    }
     return score;
 }
 
