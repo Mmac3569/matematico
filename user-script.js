@@ -9,6 +9,9 @@ async function displayHighScore() {
         console.log(json[0]["high-score"]);
         high_score_display.innerHTML = json[0]["high-score"];
         logged_in = true;
+    } else {
+        document.getElementById("high-score-label").hidden = true;
+        document.getElementById("high-score-display").hidden = true;
     }
 }
 
