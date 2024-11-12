@@ -23,9 +23,7 @@ class HighScoreHandler {
         $id = $query["id"];
         $value = $query["value"];
         header("Content-Type: application/json");
-        echo "ok";
         $db_query = $database->executeStatement("UPDATE `users` SET `high-score` = '" . $value . "' WHERE `users`.`ID`=" . $id);
-        echo "ok";
         if($db_query) {
             header("HTTP/1.1 200 OK");
         } else {
