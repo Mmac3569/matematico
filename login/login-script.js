@@ -10,7 +10,7 @@ async function loginBtClick() {
         }
     });
     if(response.ok) {
-        console.log(await response.json());
+        console.log(await response.json()[0]);
         //window.location.href = "http://matematico.great-site.net?i=" + await response.json();
     } else {
         alert("Invalid password or username");
