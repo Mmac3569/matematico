@@ -11,7 +11,11 @@
     <form>
         <input id="username_in" name="username" type="text" placeholder="username" autocomplete="username"><br>
         <input id="password_in" name= "password" type="password" placeholder="password" autocomplete="current-password"><br>
-        <input type="button" value="login" onclick="loginBtClick()">
+        <input type="button" value="login" onclick="loginBtClick()"><br>
+        <p>Nemáte účet? Zaregistrujte se zde!</p><br>
+        <input id="new_username_in" name="username" type="text" placeholder="new username" autocomplete="username"><br>
+        <input id="new_password_in" name= "password" type="password" placeholder="new password" autocomplete="new-password"><br>
+        <input type="button" value="register" onclick="registerBtClick()">
     </form>
 </body>
 </html>

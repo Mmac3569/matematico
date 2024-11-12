@@ -17,6 +17,12 @@ class RouteHandler {
                 } elseif ($uri[4] == "set") {
                     $high_score_handler->setHighScore();
                 }
+                break;
+            case "register":
+                require_once ROOT_PATH . "/Controller/Api/RegisterHandler.php";
+                $register_handler = new RegisterHandler();
+                $register_handler->register();
+                break;
             default:
                 header("HTTP/1.1 404 Not Found");
                 echo "Not found";
