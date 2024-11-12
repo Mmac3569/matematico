@@ -10,7 +10,7 @@ class user {
         let json = await response.json();
         if (response.ok) {
             console.log(json[0]["high-score"]);
-            high_score_display = json[0]["high-score"];
+            high_score_display.innerHTML = json[0]["high-score"];
         }
     }
 }
