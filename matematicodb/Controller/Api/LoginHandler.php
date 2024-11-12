@@ -7,7 +7,7 @@ class LoginHandler {
         $username = $query["username"];
         $password = $query["password"];
         header("Content-Type: application/json");
-        $db_query = $database->select("SELECT `high-score` FROM `users` WHERE `username`='" . $username . "' && `password`='" . $password . "'");
+        $db_query = $database->select("SELECT `ID` FROM `users` WHERE `username`='" . $username . "' && `password`='" . $password . "'");
         if($db_query) {
             header("HTTP/1.1 200 OK");
             echo json_encode($db_query);
