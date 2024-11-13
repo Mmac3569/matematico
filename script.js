@@ -56,6 +56,7 @@ function startBtClick() {
         counting_squares[i].innerHTML = "";
     }
     remaining_numbers = 25;
+    number_occurences = {};
     newNumber();
     game_loop_interval = window.setInterval(gameLoop, speed * 10);
     game_running = true;
