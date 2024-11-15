@@ -6,7 +6,7 @@ class HighScoreHandler {
         $database = new Database();
         $id = $query["id"];
         header("Content-Type: application/json");
-        $db_query = $database->select("SELECT `high-score` FROM `users` WHERE `ID`=" . $id);
+        $db_query = $database->select("SELECT `high-score` FROM `users` WHERE `session_id`=" . $id);
         if($db_query) {
             header("HTTP/1.1 200 OK");
             echo json_encode($db_query);
@@ -23,7 +23,7 @@ class HighScoreHandler {
         $id = $query["id"];
         $value = $query["value"];
         header("Content-Type: application/json");
-        $db_query = $database->executeStatement("UPDATE `users` SET `high-score` = '" . $value . "' WHERE `users`.`ID`=" . $id);
+        $db_query = $database->executeStatement("UPDATE `users` SET `high-score` = '" . $value . "' WHERE `users`.`session_id`=" . $id);
         if($db_query) {
             header("HTTP/1.1 200 OK");
         } else {
