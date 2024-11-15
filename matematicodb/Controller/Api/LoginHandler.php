@@ -9,7 +9,7 @@ class LoginHandler {
         header("Content-Type: application/json");
         $session_id = $this->generateSessionId();
         $db_query = $database->executeStatement("UPDATE `users` SET `session_id` = '" . $session_id . "' WHERE `username`='" . $username . "' && `password`='" . $password . "'");
-        if($db_query->get_result()) {
+        if($db_query§->affected_rows > 0) {
             header("HTTP/1.1 200 OK");
             echo json_encode($session_id);
         } else {
