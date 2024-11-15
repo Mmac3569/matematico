@@ -24,7 +24,7 @@ class LoginHandler {
         $id_out = "";
         for($i = 0; $i < 8; $i++) {
             echo "cyklus";
-            $id_out . strval(random_int(0, 9));
+            $id_out = $id_out . strval(random_int(0, 9));
         }
         return $id_out;
     }
