@@ -8,7 +8,7 @@ class LoginHandler {
         $password = $query["password"];
         header("Content-Type: application/json");
         echo "tady ok";
-        $session_id = generateSessionId();
+        $session_id = $this->generateSessionId();
         echo $session_id;
         $db_query = $database->executeStatement("UPDATE `users` SET `session_id` = '" . $session_id . "' WHERE `username`='" . $username . "' && `password`='" . $password . "'");
         if($db_query) {
@@ -21,7 +21,7 @@ class LoginHandler {
         exit;
     }
 
-    public function generateSessionId() {
+    function generateSessionId() {
         echo "dobre sa vola";
         $id_out = "";
         echo "gen id";
