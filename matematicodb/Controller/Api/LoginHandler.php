@@ -8,7 +8,6 @@ class LoginHandler {
         $password = $query["password"];
         header("Content-Type: application/json");
         $session_id = $this->generateSessionId();
-        echo $session_id;
         $db_query = $database->executeStatement("UPDATE `users` SET `session_id` = '" . $session_id . "' WHERE `username`='" . $username . "' && `password`='" . $password . "'");
         if($db_query) {
             header("HTTP/1.1 200 OK");
@@ -23,7 +22,6 @@ class LoginHandler {
     function generateSessionId() {
         $id_out = "";
         for($i = 0; $i < 8; $i++) {
-            echo "cyklus";
             $id_out = $id_out . strval(random_int(0, 9));
         }
         return $id_out;
