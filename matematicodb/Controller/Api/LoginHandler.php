@@ -7,6 +7,7 @@ class LoginHandler {
         $username = $query["username"];
         $password = $query["password"];
         header("Content-Type: application/json");
+        echo "tady ok";
         $session_id = generateSessionId();
         echo $session_id;
         $db_query = $database->executeStatement("UPDATE `users` SET `session_id` = '" . $session_id . "' WHERE `username`='" . $username . "' && `password`='" . $password . "'");
