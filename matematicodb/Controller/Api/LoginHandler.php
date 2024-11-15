@@ -21,7 +21,7 @@ class LoginHandler {
         exit;
     }
 
-    function generateSessionId() {
+    public function generateSessionId() {
         echo "dobre sa vola";
         $id_out = "";
         echo "gen id";
