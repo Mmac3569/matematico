@@ -22,6 +22,7 @@ class LoginHandler {
 
     function generateSessionId() {
         $id_out = "";
+        echo "gen id";
         for($i = 0; $i < 8; $i++) {
             echo "cyklus";
             $id_out . random_int(0, 9);
