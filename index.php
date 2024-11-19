@@ -94,6 +94,8 @@
             <label for="normal">Normální (5 vteřin)</label><br>
             <input type="radio" name="speed" id="fast" onchange="speedChanged(3)">
             <label for="fast">Rychlá (3 vteřiny)</label><br>
+            <input type="checkbox" id="wait-for-next">
+            <label for="wait-for-next">Nečekat na další číslo</label><br>
             <button class="control-button" id="start" onclick="startBtClick()">Start</button>
             <button class="control-button" id="end" onclick="endBtClick()">Ukončit</button>
         </div>
