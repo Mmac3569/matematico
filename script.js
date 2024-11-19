@@ -97,7 +97,7 @@ function newNumber() {
             newNumber();
         }
         window.clearTimeout(game_timeout_interval);
-        window.setTimeout(gameLoop, speed * 10);
+        game_timeout_interval = window.setTimeout(gameLoop, speed * 10);
     } else {
         window.clearTimeout(game_timeout_interval);
         can_place = false;
@@ -116,7 +116,7 @@ function gameLoop() {
         time_progress.style.width = time_progress_width + "px";
     }
     window.clearTimeout(game_timeout_interval);
-    window.setTimeout(gameLoop, speed * 10);
+    game_timeout_interval = window.setTimeout(gameLoop, speed * 10);
 }
 
 function getRndInteger(min, max) {
