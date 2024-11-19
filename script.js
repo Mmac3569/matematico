@@ -97,7 +97,7 @@ function newNumber() {
             newNumber();
         }
         window.clearTimeout(game_timeout_interval);
-        window.setTimeout(game_timeout_interval, speed * 10);
+        window.setTimeout(gameLoop, speed * 10);
     } else {
         window.clearTimeout(game_timeout_interval);
         can_place = false;
