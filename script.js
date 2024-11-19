@@ -115,6 +115,7 @@ function gameLoop() {
         time_progress_width += 2;
         time_progress.style.width = time_progress_width + "px";
     }
+    window.clearTimeout(game_timeout_interval);
     window.setTimeout(gameLoop, speed * 10);
 }
 
