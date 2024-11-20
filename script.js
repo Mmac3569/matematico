@@ -150,7 +150,9 @@ function gridBtClick() {
             time_progress_width = 0;
             newNumber();
         }
-        can_place = false;
+        if (wait_for_next) {
+            can_place = false;
+        }
     }
 }
 
