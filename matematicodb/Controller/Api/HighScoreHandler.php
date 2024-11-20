@@ -6,8 +6,12 @@ class HighScoreHandler {
         $database = new Database();
         $id = $query["id"];
         header("Content-Type: application/json");
+        echo "pre querry";
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $id);
+        echo "db querry";
+        echo "\n" . $db_query;
         $db_st = $database->select("SELECT `high-score` FROM `scores` WHERE `username`=" . $db_query["username"]);
+        echo "db st";
         if($db_st) {
             header("HTTP/1.1 200 OK");
             echo json_encode($db_st);
