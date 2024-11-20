@@ -6,12 +6,8 @@ class HighScoreHandler {
         $database = new Database();
         $id = $query["id"];
         header("Content-Type: application/json");
-        echo "pre querry";
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $id);
-        echo "db querry";
-        echo "\n" . $db_query[0]["username"];
-        $db_st = $database->select("SELECT `high-score` FROM `scores` WHERE `username`=" . $db_query[0]["username"]);
-        echo "db st";
+        $db_st = $database->select("SELECT `high-score` FROM `scores` WHERE `username`='" . $db_query[0]["username"] . "'");
         if($db_st) {
             header("HTTP/1.1 200 OK");
             echo json_encode($db_st);
@@ -29,7 +25,7 @@ class HighScoreHandler {
         $value = $query["value"];
         header("Content-Type: application/json");
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $id);
-        $db_st = $database->executeStatement("UPDATE `scores` SET `high-score` = '" . $value . "' WHERE `scores`.`username`=" . $db_query["username"]);
+        $db_st = $database->executeStatement("UPDATE `scores` SET `high-score` = '" . $value . "' WHERE `scores`.`username`='" . $db_query[0]["username"] . "'");
         if($db_st) {
             header("HTTP/1.1 200 OK");
         } else {
