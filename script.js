@@ -4,11 +4,10 @@ var number_display = document.getElementById("number-display");
 var remaining_display = document.getElementById("remaining-display");
 var time_progress = document.getElementById("time-progress");
 var high_score_display = document.getElementById("high-score-display");
-var wait_for_next_checkbox = document.getElementById("wait-for-next");
 var speed = 5;
 var remaining_numbers = 25;
 var current_number = 0;
-var game_timeout_interval;
+var game_loop_interval;
 var time_progress_width = 0;
 var can_place = false;
 var game_running = false;
@@ -17,7 +16,6 @@ var acab_progress = 0;
 var number_occurences = {};
 var bomber_tagger = {1:"B", 2:"o", 3:"m", 4:"b", 5:"e", 6:"r", 7:"_", 8:"T", 9:"A", 10:"G", 11:"g", 12:"E", 13:"R"};
 var bomber_tagger_enabled = false;
-var wait_for_next = true;
 
 function init() {
     grid_buttons = document.getElementsByClassName("button");
@@ -26,7 +24,6 @@ function init() {
     remaining_display = document.getElementById("remaining-display");
     time_progress = document.getElementById("time-progress");
     high_score_display = document.getElementById("high-score-display");
-    wait_for_next_checkbox = document.getElementById("wait-for-next");
     speed = 5;
     remaining_numbers = 25;
     current_number = 10;
@@ -58,11 +55,10 @@ function startBtClick() {
     for(i = 0; i < counting_squares.length; i++) {
         counting_squares[i].innerHTML = "";
     }
-    wait_for_next = !wait_for_next_checkbox.checked;
     remaining_numbers = 25;
     number_occurences = {};
     newNumber();
-    game_timeout_interval = window.setTimeout(gameLoop, speed * 10);
+    game_loop_interval = window.setInterval(gameLoop, speed * 10);
     game_running = true;
 }
 
@@ -70,7 +66,7 @@ function endBtClick() {
     if(!game_running) {
         return 0;
     }
-    window.clearTimeout(game_timeout_interval);
+    window.clearInterval(game_loop_interval);
     can_place = false;
     time_progress_width = 0;
     time_progress.style.width = time_progress_width + "px";
@@ -96,10 +92,8 @@ function newNumber() {
         else {
             newNumber();
         }
-        window.clearTimeout(game_timeout_interval);
-        game_timeout_interval = window.setTimeout(gameLoop, speed * 10);
     } else {
-        window.clearTimeout(game_timeout_interval);
+        window.clearInterval(game_loop_interval);
         can_place = false;
         number_display.innerHTML = calculateScore();
         game_running = false;
@@ -115,8 +109,6 @@ function gameLoop() {
         time_progress_width += 2;
         time_progress.style.width = time_progress_width + "px";
     }
-    window.clearTimeout(game_timeout_interval);
-    game_timeout_interval = window.setTimeout(gameLoop, speed * 10);
 }
 
 function getRndInteger(min, max) {
