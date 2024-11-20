@@ -9,7 +9,7 @@ class HighScoreHandler {
         echo "pre querry";
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $id);
         echo "db querry";
-        echo "\n" . $db_query;
+        echo "\n" . $db_query[0];
         $db_st = $database->select("SELECT `high-score` FROM `scores` WHERE `username`=" . $db_query["username"]);
         echo "db st";
         if($db_st) {
