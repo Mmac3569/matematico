@@ -96,8 +96,6 @@ function newNumber() {
         else {
             newNumber();
         }
-        window.clearInterval(game_loop_interval);
-        game_loop_interval = window.setInterval(gameLoop, speed * 10);
     } else {
         window.clearInterval(game_loop_interval);
         can_place = false;
