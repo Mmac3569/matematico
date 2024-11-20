@@ -4,6 +4,7 @@ var number_display = document.getElementById("number-display");
 var remaining_display = document.getElementById("remaining-display");
 var time_progress = document.getElementById("time-progress");
 var high_score_display = document.getElementById("high-score-display");
+var wait_for_next_checkbox = document.getElementById("wait-for-next");
 var speed = 5;
 var remaining_numbers = 25;
 var current_number = 0;
@@ -16,6 +17,7 @@ var acab_progress = 0;
 var number_occurences = {};
 var bomber_tagger = {1:"B", 2:"o", 3:"m", 4:"b", 5:"e", 6:"r", 7:"_", 8:"T", 9:"A", 10:"G", 11:"g", 12:"E", 13:"R"};
 var bomber_tagger_enabled = false;
+var wait_for_next = true;
 
 function init() {
     grid_buttons = document.getElementsByClassName("button");
@@ -24,6 +26,7 @@ function init() {
     remaining_display = document.getElementById("remaining-display");
     time_progress = document.getElementById("time-progress");
     high_score_display = document.getElementById("high-score-display");
+    wait_for_next_checkbox = document.getElementById("wait-for-next");
     speed = 5;
     remaining_numbers = 25;
     current_number = 10;
@@ -59,6 +62,7 @@ function startBtClick() {
     number_occurences = {};
     newNumber();
     game_loop_interval = window.setInterval(gameLoop, speed * 10);
+    wait_for_next = !wait_for_next_checkbox.checked;
     game_running = true;
 }
 
@@ -92,6 +96,8 @@ function newNumber() {
         else {
             newNumber();
         }
+        window.clearInterval(game_loop_interval);
+        game_loop_interval = window.setInterval(gameLoop, speed * 10);
     } else {
         window.clearInterval(game_loop_interval);
         can_place = false;
@@ -102,7 +108,7 @@ function newNumber() {
 
 function gameLoop() {
     if(time_progress_width == 200) {
-        time_progress.style.width = "0px"
+        time_progress.style.width = "0px";
         time_progress_width = 0;
         newNumber();
     } else {
@@ -140,6 +146,11 @@ function gridBtClick() {
             this.innerHTML = toBomberTagger(current_number);
         } else {
             this.innerHTML = current_number;
+        }
+        if (!wait_for_next) {
+            time_progress.style.width = "0px";
+            time_progress_width = 0;
+            newNumber();
         }
         can_place = false;
     }
