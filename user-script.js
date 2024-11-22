@@ -19,12 +19,11 @@ async function displayLowScore() {
     let response = await fetch("http://matematico.great-site.net/matematicodb/index.php/low-score/get?id=" + user_id);
     let json = await response.json();
     if (response.ok) {
-        console.log(json[0]["low-score"]);
-        console.log(json[0]["low-score"] == null);
         if (json[0]["low-score"] == null) {
             high_score_display.innerHTML = "N/A";
+        } else {
+            high_score_display.innerHTML = json[0]["low-score"];
         }
-        high_score_display.innerHTML = json[0]["low-score"];
         document.getElementById("high-score-label").hidden = false;
         document.getElementById("high-score-display").hidden = false;
         logged_in = true;
