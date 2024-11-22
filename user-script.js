@@ -19,7 +19,7 @@ async function displayLowScore() {
     let response = await fetch("http://matematico.great-site.net/matematicodb/index.php/low-score/get?id=" + user_id);
     let json = await response.json();
     if (response.ok) {
-        if (json[0]["low-score"] == null) {
+        if (json[0]["low-score"] == "null") {
             high_score_display.innerHTML = "N/A";
         }
         high_score_display.innerHTML = json[0]["low-score"];
