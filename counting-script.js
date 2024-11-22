@@ -20,7 +20,7 @@ function calculateScore() {
         unplaced_number_punishment += remaining_numbers * 2;
         score += unplaced_number_punishment;
     }
-    if (logged_in && score > parseInt(high_score_display.innerHTML)) {
+    if (logged_in && score > parseInt(high_score_display.innerHTML) && !game_for_zero) {
         setHighScore(score);
         alert("Nové nejvyšší skóre! (" + score + ")");
     } else if (high_score_display.innerHTML == "N/A" && game_for_zero && logged_in) {
