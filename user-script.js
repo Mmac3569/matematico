@@ -20,7 +20,8 @@ async function displayLowScore() {
     let json = await response.json();
     if (response.ok) {
         console.log(json[0]["low-score"]);
-        if (json[0]["low-score"] == "null") {
+        console.log(json[0]["low-score"] == null);
+        if (json[0]["low-score"] == null) {
             high_score_display.innerHTML = "N/A";
         }
         high_score_display.innerHTML = json[0]["low-score"];
