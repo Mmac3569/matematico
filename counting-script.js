@@ -17,6 +17,7 @@ function calculateScore() {
     score += countPairs(second_diagonal) + countPostupky(second_diagonal);
     document.getElementById("c" + 5).innerHTML = countPairs(second_diagonal) + countPostupky(second_diagonal);
     if (game_for_zero) {
+        unplaced_number_punishment += remaining_numbers * 2;
         score += unplaced_number_punishment;
     }
     if (logged_in && score > parseInt(high_score_display.innerHTML)) {
