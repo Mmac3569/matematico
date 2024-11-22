@@ -92,6 +92,7 @@ function newNumber() {
     } else {
         window.clearInterval(game_loop_interval);
         can_place = false;
+        console.log(remaining_numbers);
         number_display.innerHTML = calculateScore();
         game_running = false;
     }

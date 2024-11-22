@@ -16,6 +16,7 @@ function calculateScore() {
     document.getElementById("c" + 11).innerHTML = countPairs(first_diagonal) + countPostupky(first_diagonal);
     score += countPairs(second_diagonal) + countPostupky(second_diagonal);
     document.getElementById("c" + 5).innerHTML = countPairs(second_diagonal) + countPostupky(second_diagonal);
+    console.log(remaining_numbers);
     if (game_for_zero) {
         unplaced_number_punishment += remaining_numbers * 2;
         score += unplaced_number_punishment;
