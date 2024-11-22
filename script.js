@@ -104,6 +104,7 @@ function gameLoop() {
         time_progress_width = 0;
         if(can_place && game_for_zero) {
             unplaced_number_punishment += 2;
+            console.log(can_place);
         }
         newNumber();
     } else {
