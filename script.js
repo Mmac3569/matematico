@@ -5,6 +5,7 @@ var remaining_display = document.getElementById("remaining-display");
 var time_progress = document.getElementById("time-progress");
 var high_score_display = document.getElementById("high-score-display");
 var wait_for_next_checkbox = document.getElementById("wait-for-next");
+var game_for_zero_checkbox = document.getElementById("game-for-zero");
 var speed = 5;
 var remaining_numbers = 25;
 var current_number = 0;
@@ -18,6 +19,7 @@ var number_occurences = {};
 var bomber_tagger = {1:"B", 2:"o", 3:"m", 4:"b", 5:"e", 6:"r", 7:"_", 8:"T", 9:"A", 10:"G", 11:"g", 12:"E", 13:"R"};
 var bomber_tagger_enabled = false;
 var wait_for_next = true;
+var game_for_zero = false;
 
 function init() {
     grid_buttons = document.getElementsByClassName("button");
@@ -27,17 +29,6 @@ function init() {
     time_progress = document.getElementById("time-progress");
     high_score_display = document.getElementById("high-score-display");
     wait_for_next_checkbox = document.getElementById("wait-for-next");
-    speed = 5;
-    remaining_numbers = 25;
-    current_number = 10;
-    time_progress_width = 0;
-    can_place = false;
-    game_running = false;
-    acab_pattern = [1, 3, 1, 2];
-    acab_progress = 0;
-    number_occurences = {};
-    bomber_tagger = {1:"B", 2:"o", 3:"m", 4:"b", 5:"e", 6:"r", 7:"_", 8:"T", 9:"A", 10:"G", 11:"g", 12:"E", 13:"R"};
-    bomber_tagger_enabled = false;
     for(i = 0; i < grid_buttons.length; i++) {
         grid_buttons[i].addEventListener("click", gridBtClick);
         grid_buttons[i].id = i;
@@ -60,9 +51,10 @@ function startBtClick() {
     }
     remaining_numbers = 25;
     number_occurences = {};
+    wait_for_next = !wait_for_next_checkbox.checked;
+    game_for_zero = game_for_zero_checkbox.checked;
     newNumber();
     game_loop_interval = window.setInterval(gameLoop, speed * 10);
-    wait_for_next = !wait_for_next_checkbox.checked;
     game_running = true;
 }
 
@@ -108,6 +100,9 @@ function gameLoop() {
     if(time_progress_width == 200) {
         time_progress.style.width = "0px";
         time_progress_width = 0;
+        if(can_place && game_for_zero) {
+            unplaced_number_punishment += 2;
+        }
         newNumber();
     } else {
         time_progress_width += 2;
@@ -120,7 +115,17 @@ function getRndInteger(min, max) {
 }
 
 function speedChanged(new_speed) {
-    speed = new_speed;
+    if(!game_running) {
+        speed = new_speed;
+    }
+}
+
+function gameForZeroChanged() {
+    if (!game_running && game_for_zero_checkbox.checked) {
+        displayLowScore();
+    } else if (!game_running && !game_for_zero_checkbox.checked) {
+        displayHighScore();
+    }
 }
 
 function gridBtClick() {

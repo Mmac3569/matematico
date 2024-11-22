@@ -1,5 +1,6 @@
 var first_diagonal;
 var second_diagonal;
+var unplaced_number_punishment;
 
 function calculateScore() {
     let score = 0;
@@ -15,9 +16,15 @@ function calculateScore() {
     document.getElementById("c" + 11).innerHTML = countPairs(first_diagonal) + countPostupky(first_diagonal);
     score += countPairs(second_diagonal) + countPostupky(second_diagonal);
     document.getElementById("c" + 5).innerHTML = countPairs(second_diagonal) + countPostupky(second_diagonal);
+    if (game_for_zero) {
+        score += unplaced_number_punishment;
+    }
     if (logged_in && score > parseInt(high_score_display.innerHTML)) {
         setHighScore(score);
         alert("Nové nejvyšší skóre! (" + score + ")");
+    } else if (logged_in && game_for_zero && score < parseInt(high_score_display.innerHTML)) {
+        setLowScore(score);
+        alert("Nové nejnižší skóre! (" + score + ")");
     }
     return score;
 }

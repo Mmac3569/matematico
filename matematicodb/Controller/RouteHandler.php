@@ -18,6 +18,15 @@ class RouteHandler {
                     $high_score_handler->setHighScore();
                 }
                 break;
+            case "low-score":
+                require_once ROOT_PATH . "/Controller/Api/LowScoreHandler.php";
+                $low_score_handler = new LowScoreHandler();
+                if($uri[4] == "get") {
+                    $low_score_handler->getLowScore();
+                } elseif ($uri[4] == "set") {
+                    $low_score_handler->setLowScore();
+                }
+                break;
             case "register":
                 require_once ROOT_PATH . "/Controller/Api/RegisterHandler.php";
                 $register_handler = new RegisterHandler();
