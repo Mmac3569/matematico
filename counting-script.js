@@ -1,6 +1,6 @@
 var first_diagonal;
 var second_diagonal;
-var unplaced_number_punishment;
+var unplaced_number_punishment = 0;
 
 function calculateScore() {
     let score = 0;
