@@ -22,6 +22,9 @@ function calculateScore() {
     if (logged_in && score > parseInt(high_score_display.innerHTML)) {
         setHighScore(score);
         alert("Nové nejvyšší skóre! (" + score + ")");
+    } else if (high_score_display.innerHTML == "N/A" && game_for_zero && logged_in) {
+        setLowScore(score);
+        alert("Nové nejnižší skóre! (" + score + ")");
     } else if (logged_in && game_for_zero && score < parseInt(high_score_display.innerHTML)) {
         setLowScore(score);
         alert("Nové nejnižší skóre! (" + score + ")");
