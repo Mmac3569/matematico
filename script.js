@@ -29,6 +29,7 @@ function init() {
     time_progress = document.getElementById("time-progress");
     high_score_display = document.getElementById("high-score-display");
     wait_for_next_checkbox = document.getElementById("wait-for-next");
+    game_for_zero_checkbox = document.getElementById("game-for-zero");
     for(i = 0; i < grid_buttons.length; i++) {
         grid_buttons[i].addEventListener("click", gridBtClick);
         grid_buttons[i].id = i;
