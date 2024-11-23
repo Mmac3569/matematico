@@ -52,6 +52,7 @@ function startBtClick() {
     }
     remaining_numbers = 25;
     number_occurences = {};
+    unplaced_number_punishment = 0;
     wait_for_next = !wait_for_next_checkbox.checked;
     game_for_zero = game_for_zero_checkbox.checked;
     newNumber();
