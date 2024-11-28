@@ -32,6 +32,11 @@ class RouteHandler {
                 $register_handler = new RegisterHandler();
                 $register_handler->register();
                 break;
+            case "multiplayer":
+                require_once ROOT_PATH . "/Controller/Api/MultiplayerHandler.php";
+                $multiplayer_handler = new MultiplayerHandler();
+                $multiplayer_handler->handleMultiplayer($uri);
+                break;
             default:
                 header("HTTP/1.1 404 Not Found");
                 echo "Not found";
