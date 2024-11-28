@@ -28,7 +28,7 @@ class MultiplayerHandler {
         $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'"); echo "6g";
         header("HTTP/1.1 200 OK");
         header("Content-Type: application/json");
-        echo json_encode($game_id);
+        echo $game_id;
         exit;
     }
 
