@@ -22,10 +22,10 @@ class MultiplayerHandler {
     function createGame($user_id) {
         $game_id = $this->generateGameId();
         $database = new Database();
-        $file = fopen(ROOT_PATH . "/game-codes.txt", "a"); echo "3g";
-        fwrite($file, $game_id); fclose($file); echo "4g";
-        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id); echo "5g";
-        $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'"); echo "6g";
+        $file = fopen(ROOT_PATH . "/game-codes.txt", "a");
+        fwrite($file, $game_id . "\n"); fclose($file);
+        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id);
+        $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'");
         header("HTTP/1.1 200 OK");
         header("Content-Type: application/json");
         echo $game_id;
@@ -33,10 +33,10 @@ class MultiplayerHandler {
     }
 
     function joinGame($game_id, $user_id) {
-        $file = fopen(ROOT_PATH . "/game-codes.txt", "r");
-        $content = fread($file, filesize($file)); fclose($file);
-        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id);
-        $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'");
+        $file = fopen(ROOT_PATH . "/game-codes.txt", "r"); echo "g";
+        $content = fread($file, filesize($file)); fclose($file); echo "g";
+        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id); echo "g";
+        $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'"); echo "g";
         if (strpos($content, $game_id) === false) {
             header("HTTP/1.1 404 No game with this code");
         } else {
