@@ -130,6 +130,11 @@ body {
     color: black;
 }
 
+#multiplayer {
+    margin-left: 150px;
+    color: black;
+}
+
 a {
     text-decoration: none;
 }
