@@ -34,7 +34,7 @@ class MultiplayerHandler {
 
     function joinGame($game_id, $user_id) {
         $file = fopen(ROOT_PATH . "/game-codes.txt", "r"); echo "g";
-        $content = fread($file, filesize($file)); fclose($file); echo "g";
+        $content = fread($file, filesize($file)); echo "g"; fclose($file); echo "g";
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id); echo "g";
         $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'"); echo "g";
         if (strpos($content, $game_id) === false) {
