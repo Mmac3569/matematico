@@ -28,14 +28,14 @@ class MultiplayerHandler {
         $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'"); echo "6g";
         header("HTTP/1.1 200 OK");
         header("Content-Type: application/json");
-        echo $game_id;
+        echo json_encode($game_id);
         exit;
     }
 
     function joinGame($game_id, $user_id) {
         $file = fopen(ROOT_PATH . "/Controller/game-codes.txt", "r");
         $content = fread($file, filesize($file)); fclose($file);
-        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $id);
+        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id);
         $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'");
         if (strpos($content, $game_id) === false) {
             header("HTTP/1.1 404 No game with this code");
