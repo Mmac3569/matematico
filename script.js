@@ -174,5 +174,5 @@ function fromBomberTagger(letter) {
 }
 
 function redirectToMultiplayer() {
-    window.location.href = "http://matematico.great-site.net/multiplayer?" + window.location.search;
+    window.location.href = "http://matematico.great-site.net/multiplayer" + window.location.search;
 }
