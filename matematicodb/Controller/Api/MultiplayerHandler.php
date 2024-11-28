@@ -38,7 +38,7 @@ class MultiplayerHandler {
         $content = fread($file, filesize(ROOT_PATH . "/game-codes.txt")); fclose($file);
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id);
         $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'");
-        if (strpos($content, $game_id) === false) {
+        if (strpos($content, $game_id) === false || !$db_query) {
             header("HTTP/1.1 404 No game with this code");
         } else {
             header("HTTP/1.1 200 OK");
