@@ -5,7 +5,7 @@ class MultiplayerHandler {
         parse_str($_SERVER['QUERY_STRING'], $query);
         switch($uri[4]) {
             case "create":
-                $this->createGame();
+                $this->createGame($query["id"]);
                 break;
             case "join":
                 $this->joinGame($query["code"], $query["id"]);
