@@ -23,7 +23,7 @@ class MultiplayerHandler {
         $game_id = $this->generateGameId();
         $database = new Database();
         $file = fopen(ROOT_PATH . "/game-codes.txt", "a");
-        fwrite($file, $game_id . "\n"); fclose($file);
+        fwrite($file, "|" . $game_id . "|\n"); fclose($file);
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id);
         $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'");
         header("HTTP/1.1 200 OK");

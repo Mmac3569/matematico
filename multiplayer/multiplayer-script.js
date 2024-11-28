@@ -1,7 +1,7 @@
 
 
 async function joinGame() {
-    let code_input = document.getElementById("code-in").value;
+    let code_input = "|" + document.getElementById("code-in").value + "|";
     let user_id = new URLSearchParams(window.location.search).get("id");
     if(user_id == null) {
         alert("Abyste mohli hrát multiplayer musíte se přihlásit nebo zaregistrovat!");

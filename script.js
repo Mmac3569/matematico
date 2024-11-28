@@ -172,3 +172,7 @@ function toBomberTagger(number) {
 function fromBomberTagger(letter) {
     return parseInt(Object.keys(bomber_tagger).find(key => bomber_tagger[key] == letter));
 }
+
+function redirectToMultiplayer() {
+    window.location.href = "http://matematico.great-site.net/multiplayer?" + window.location.search;
+}
