@@ -20,7 +20,7 @@ class MultiplayerHandler {
     }
 
     function createGame($user_id) {
-        $game_id = generateGameId();
+        $game_id = $this->generateGameId();
         $database = new Database();
         $file = fopen(ROOT_PATH . "/Controller/game-codes.txt", "a"); echo "3g";
         fwrite($file, $game_id); fclose($file); echo "4g";
