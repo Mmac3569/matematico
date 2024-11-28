@@ -34,10 +34,10 @@ class MultiplayerHandler {
 
     function joinGame($game_id, $user_id) {
         $database = new Database();
-        $file = fopen(ROOT_PATH . "/game-codes.txt", "r"); echo "g";
-        $content = fread($file, filesize(ROOT_PATH . "/game-codes.txt")); echo "g"; fclose($file); echo "g";
-        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id); echo "g";
-        $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'"); echo "g";
+        $file = fopen(ROOT_PATH . "/game-codes.txt", "r");
+        $content = fread($file, filesize(ROOT_PATH . "/game-codes.txt")); fclose($file);
+        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id);
+        $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'");
         if (strpos($content, $game_id) === false) {
             header("HTTP/1.1 404 No game with this code");
         } else {
