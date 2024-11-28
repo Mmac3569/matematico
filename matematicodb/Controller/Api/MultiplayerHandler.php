@@ -22,10 +22,10 @@ class MultiplayerHandler {
     function createGame($user_id) {
         $game_id = generateGameId();
         $database = new Database();
-        $file = fopen(ROOT_PATH . "/Controller/game-codes.txt", "a");
-        fwrite($file, $game_id); fclose($file);
-        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $id);
-        $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'");
+        $file = fopen(ROOT_PATH . "/Controller/game-codes.txt", "a"); echo "3g";
+        fwrite($file, $game_id); fclose($file); echo "4g";
+        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $id); echo "5g";
+        $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'"); echo "6g";
         header("HTTP/1.1 200 OK");
         header("Content-Type: application/json");
         echo $game_id;
