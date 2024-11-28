@@ -22,7 +22,7 @@ async function createNewGame() {
         alert("Abyste mohli hrát multiplayer musíte se přihlásit nebo zaregistrovat!");
         return -1;
     }
-    let response = await fetch(`http://matematico.great-site.net/matematicodb/index.php/multiplayer/join?id=${user_id}`);
+    let response = await fetch(`http://matematico.great-site.net/matematicodb/index.php/multiplayer/create?id=${user_id}`);
     if(response.ok) {
         alert("create successful");
         game_code = response.body;
