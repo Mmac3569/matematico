@@ -24,7 +24,7 @@ class MultiplayerHandler {
         $database = new Database();
         $file = fopen(ROOT_PATH . "/Controller/game-codes.txt", "a"); echo "3g";
         fwrite($file, $game_id); fclose($file); echo "4g";
-        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $id); echo "5g";
+        $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id); echo "5g";
         $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'"); echo "6g";
         header("HTTP/1.1 200 OK");
         header("Content-Type: application/json");
