@@ -22,7 +22,7 @@ class MultiplayerHandler {
     function createGame($user_id) {
         $game_id = $this->generateGameId();
         $database = new Database();
-        $file = fopen(ROOT_PATH . "/Controller/game-codes.txt", "a"); echo "3g";
+        $file = fopen(ROOT_PATH . "/game-codes.txt", "a"); echo "3g";
         fwrite($file, $game_id); fclose($file); echo "4g";
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id); echo "5g";
         $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'"); echo "6g";
@@ -33,7 +33,7 @@ class MultiplayerHandler {
     }
 
     function joinGame($game_id, $user_id) {
-        $file = fopen(ROOT_PATH . "/Controller/game-codes.txt", "r");
+        $file = fopen(ROOT_PATH . "/game-codes.txt", "r");
         $content = fread($file, filesize($file)); fclose($file);
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id);
         $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'");
@@ -46,10 +46,10 @@ class MultiplayerHandler {
     }
 
     function startGame($game_id) {
-        $file = fopen(ROOT_PATH . "/Controller/game-codes.txt", "r");
+        $file = fopen(ROOT_PATH . "/game-codes.txt", "r");
         $content = fread($file, filesize($file)); fclose($file);
         $content = str_replace($game_id, "", $content);
-        $file = fopen(ROOT_PATH . "/Controller/game-codes.txt", "w");
+        $file = fopen(ROOT_PATH . "/game-codes.txt", "w");
         fwrite($file, $content); fclose();
     }
 
