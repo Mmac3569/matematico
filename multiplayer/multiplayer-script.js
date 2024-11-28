@@ -1,7 +1,7 @@
 
 
 async function joinGame() {
-    let code_input = "|" + document.getElementById("code-in").value + "|";
+    let code_input = "x" + document.getElementById("code-in").value + "x";
     let user_id = new URLSearchParams(window.location.search).get("id");
     if(user_id == null) {
         alert("Abyste mohli hrát multiplayer musíte se přihlásit nebo zaregistrovat!");
@@ -11,6 +11,6 @@ async function joinGame() {
     if(response.ok) {
         alert("join successful");
     } else {
-        alert("Kód " + code_input + " neexistuje");
+        alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
     }
 }
