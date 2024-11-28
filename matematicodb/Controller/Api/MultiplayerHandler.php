@@ -33,6 +33,7 @@ class MultiplayerHandler {
     }
 
     function joinGame($game_id, $user_id) {
+        $database = new Database();
         $file = fopen(ROOT_PATH . "/game-codes.txt", "r"); echo "g";
         $content = fread($file, filesize(ROOT_PATH . "/game-codes.txt")); echo "g"; fclose($file); echo "g";
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id); echo "g";
