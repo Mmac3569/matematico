@@ -12,7 +12,7 @@ async function joinGame() {
     if(response.ok) {
         alert("join successful");
         game_code = code_input;
-        sse_source = new EventSource();
+        sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php");
         sse_source.onmessage = handleSSE;
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
