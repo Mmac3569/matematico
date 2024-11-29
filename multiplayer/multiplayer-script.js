@@ -1,4 +1,5 @@
 var game_code;
+var sse_source;
 
 async function joinGame() {
     let code_input = document.getElementById("code-in").value;
@@ -11,6 +12,8 @@ async function joinGame() {
     if(response.ok) {
         alert("join successful");
         game_code = code_input;
+        sse_source = new EventSource();
+        sse_source.onmessage = handleSSE;
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
     }
@@ -26,7 +29,15 @@ async function createNewGame() {
     if(response.ok) {
         alert("create successful");
         game_code = await response.text();
+        sse_source.onmessage = handleSSE;
     } else {
         alert("Přihlášení není platné");
+    }
+}
+
+async function showParty() {
+    let response = await fetch("http://matematico.great-site.net/multiplayer/party.html");
+    if(response.ok) {
+        document.body = response.body;
     }
 }
