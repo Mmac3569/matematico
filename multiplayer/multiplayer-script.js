@@ -14,6 +14,7 @@ async function joinGame() {
         game_code = code_input;
         sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php");
         sse_source.onmessage = handleSSE;
+        showParty();
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
     }
@@ -31,6 +32,7 @@ async function createNewGame() {
         game_code = await response.text();
         sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php");
         sse_source.onmessage = handleSSE;
+        showParty();
     } else {
         alert("Přihlášení není platné");
     }
