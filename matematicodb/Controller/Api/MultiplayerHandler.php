@@ -48,9 +48,9 @@ class MultiplayerHandler {
             header("Content-Type: application/json");
             $db_query2 = $database->select("SELECT `username` FROM `users` WHERE `in_game`='" . $game_id . "'");
             echo json_encode($db_query2);
-            require_once ROOT_PATH . "/Controller/SSE/GameSSE.php";
-            $sse = new GameSSE();
-            $sse->queuePlayerUpdate($game_id, $db_query[0]["username"], "join");
+            //require_once ROOT_PATH . "/Controller/SSE/GameSSE.php";
+            //$sse = new GameSSE();
+            //$sse->queuePlayerUpdate($game_id, $db_query[0]["username"], "join");
         }
         exit;
     }
