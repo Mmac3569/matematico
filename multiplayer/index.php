@@ -14,7 +14,7 @@
     </header>
 
     <div id="flex-container">
-        <div id="just-a-div">
+        <div>
             <input type="text" id="code-in" placeholder="kód hry">
             <button id="code-submit" onclick="joinGame()">Připojit</button><br>
             <button id="create-new-button" onclick="createNewGame()">Vytvořit novou hru</button>
