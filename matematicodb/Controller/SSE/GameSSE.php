@@ -1,5 +1,5 @@
 <?php
-header("Content-type: text/event-stream");
+header("Content-Type: text/event-stream");
 
 function sendPlayerUpdate($game_id, $username, $type) {
     header("HTTP/1.1 200 OK");
