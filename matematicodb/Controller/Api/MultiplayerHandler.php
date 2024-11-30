@@ -30,7 +30,7 @@ class MultiplayerHandler {
             header("HTTP/1.1 300 Failed to create game");
         } else {
             header("HTTP/1.1 200 OK");
-            echo $game_id;
+            echo $game_id . "\n" . $db_query[0]["username"];
         }
         exit;
     }
@@ -45,6 +45,12 @@ class MultiplayerHandler {
             header("HTTP/1.1 404 No game with this code");
         } else {
             header("HTTP/1.1 200 OK");
+            header("Content-Type: application/json");
+            $db_query2 = $database->select("SELECT `username` FROM `users` WHERE `in_game`='" . $game_id . "'");
+            echo json_encode($db_query2);
+            require_once ROOT_PATH . "/Controller/SSE/GameSSE.php";
+            $sse = new GameSSE();
+            $sse->queuePlayerUpdate($game_id, $db_query[0]["username"], "join");
         }
         exit;
     }

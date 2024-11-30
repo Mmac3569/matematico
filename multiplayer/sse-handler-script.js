@@ -7,7 +7,7 @@ function handleSSE(event) {
     }
     switch(data[1]) {
         case "PlayerUpdate":
-            handlePlayerUpdate();
+            handlePlayerUpdate(data);
             break;
         case "GameStart":
             break;
@@ -18,7 +18,7 @@ function handleSSE(event) {
 
 function handlePlayerUpdate(data) {
     if(data[3] == "join") {
-
+        document.getElementById("players-div").innerHTML += data[2];
     } else if (data[3] == "leave") {
 
     }

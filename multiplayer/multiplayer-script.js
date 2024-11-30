@@ -15,6 +15,8 @@ async function joinGame() {
         sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php");
         sse_source.onmessage = handleSSE;
         showParty(false);
+        let response_text = await response.text();
+        console.log(response.text());
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
     }
@@ -29,16 +31,17 @@ async function createNewGame() {
     let response = await fetch(`http://matematico.great-site.net/matematicodb/index.php/multiplayer/create?id=${user_id}`);
     if(response.ok) {
         alert("create successful");
-        game_code = await response.text();
+        let response_text = await response.text();
+        game_code = response_text.split("\n")[0];
         sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php");
         sse_source.onmessage = handleSSE;
-        showParty(true);
+        showParty(true, response_text.split("\n")[1]);
     } else {
         alert("Přihlášení není platné");
     }
 }
 
-async function showParty(master) {
+async function showParty(master, [this_username]) {
     let response = await fetch("http://matematico.great-site.net/multiplayer/party.html?v=" + Date.now());
     if(response.ok) {
         document.body.innerHTML = await response.text();
@@ -49,6 +52,12 @@ async function showParty(master) {
                 elements[i].disabled = false;
             }
         }
-        document.getElementById("players-div").innerHTML += "<h5>" + new URLSearchParams(window.location.search).get("id") + "</h5>";
+        if(this_username != null && this_username != "undefined") {
+            addPlayer(this_username);
+        }
     }
+}
+
+function addPlayer(username) {
+    document.getElementById("players-div").innerHTML += "<h5>" + username + "</h5>";
 }
