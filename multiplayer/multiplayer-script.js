@@ -39,7 +39,7 @@ async function createNewGame() {
 }
 
 async function showParty() {
-    let response = await fetch("http://matematico.great-site.net/multiplayer/party.html");
+    let response = await fetch("http://matematico.great-site.net/multiplayer/party.html?v=" + Date.now());
     if(response.ok) {
         document.body.innerHTML = await response.text();
     }
