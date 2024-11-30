@@ -15,8 +15,8 @@ async function joinGame() {
         sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php");
         sse_source.onmessage = handleSSE;
         showParty(false);
-        let response_text = await response.text();
-        console.log(response_text);
+        let response_json = await response.json();
+        console.log(response_json);
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
     }
