@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/event-stream");
-sendUpdatesFromQueue();
+//sendUpdatesFromQueue();
 
 class GameSSE {
     const eventqueue_file_path = ROOT_PATH . "/Controller/SSE/eventqueue.txt";
