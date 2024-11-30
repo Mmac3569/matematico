@@ -44,9 +44,10 @@ async function showParty(master) {
         document.body.innerHTML = await response.text();
         document.getElementById("header").innerHTML += game_code;
         if(master) {
-            document.getElementsByClassName("game-controls").forEach(element => {
-                element.disabled = false;                
-            });
+            let elements = document.getElementsByClassName("game-controls");
+            for(var i = 0; i < elements.length; i++) {
+                elements[i].disabled = false;
+            }
         }
         document.getElementById("players-div").innerHTML += "<h5>" + new URLSearchParams(window.location.search).get("id") + "</h5>";
     }
