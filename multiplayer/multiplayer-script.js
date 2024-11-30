@@ -16,7 +16,7 @@ async function joinGame() {
         sse_source.onmessage = handleSSE;
         showParty(false);
         let response_text = await response.text();
-        console.log(response.text());
+        console.log(response_text);
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
     }
