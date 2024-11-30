@@ -41,7 +41,6 @@ async function createNewGame() {
 async function showParty() {
     let response = await fetch("http://matematico.great-site.net/multiplayer/party.html");
     if(response.ok) {
-        console.log(await response.text());
         document.body = await response.text();
     }
 }
