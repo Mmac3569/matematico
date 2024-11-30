@@ -29,6 +29,7 @@ async function createNewGame() {
     if(response.ok) {
         alert("create successful");
         game_code = await response.text();
+        sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php");
         sse_source.onmessage = handleSSE;
     } else {
         alert("Přihlášení není platné");
