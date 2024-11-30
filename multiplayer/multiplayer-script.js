@@ -16,7 +16,9 @@ async function joinGame() {
         sse_source.onmessage = handleSSE;
         showParty(false);
         let response_json = await response.json();
-        console.log(response_json);
+        for(let i = 0; i < response_json.length; i++) {
+            addPlayer(response_json[i]["username"]);
+        }
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
     }
@@ -35,13 +37,14 @@ async function createNewGame() {
         game_code = response_text.split("\n")[0];
         sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php");
         sse_source.onmessage = handleSSE;
-        showParty(true, response_text.split("\n")[1]);
+        showParty(true);
+        addPlayer(response_text.split("\n")[1]);
     } else {
         alert("Přihlášení není platné");
     }
 }
 
-async function showParty(master, [this_username]) {
+async function showParty(master) {
     let response = await fetch("http://matematico.great-site.net/multiplayer/party.html?v=" + Date.now());
     if(response.ok) {
         document.body.innerHTML = await response.text();
@@ -51,9 +54,6 @@ async function showParty(master, [this_username]) {
             for(var i = 0; i < elements.length; i++) {
                 elements[i].disabled = false;
             }
-        }
-        if(this_username != null && this_username != "undefined") {
-            addPlayer(this_username);
         }
     }
 }
