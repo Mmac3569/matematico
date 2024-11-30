@@ -22,7 +22,7 @@ button {
     margin-top: 10%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 #create-new-button {
