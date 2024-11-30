@@ -1,3 +1,27 @@
 <header>
-    <h1>Matematico multiplayer</h1>
+    <h1>Matematico multiplayer hra </h1>
 </header>
+
+<div id="flex-container">
+    <div id="game-control">
+        <label>Rychlost hry</label><br>
+        <input type="radio" name="speed" id="slow" onchange="speedChanged(7)" disabled>
+        <label for="slow">Pomalá (7 vteřin)</label><br>
+        <input type="radio" name="speed" id="normal" checked="true" onchange="speedChanged(5)" disabled>
+        <label for="normal">Normální (5 vteřin)</label><br>
+        <input type="radio" name="speed" id="fast" onchange="speedChanged(3)" disabled>
+        <label for="fast">Rychlá (3 vteřiny)</label><br>
+        <!--<input type="checkbox" id="wait-for-next">
+        <label for="wait-for-next">Nečekat na další číslo</label><br>-->
+        <input type="checkbox" id="game-for-zero" onchange="gameForZeroChanged()" disabled>
+        <label for="game-for-zero">Hra na nulu</label><br>
+        <button class="control-button" id="start" onclick="startBtClick()" disabled>Start</button>
+        <button class="control-button" id="leave" onclick="leaveBtClick()">Opusit hru</button>
+    </div>
+    <div id="players-div">
+        <h5>Hráči</h5>
+    </div>
+    <div id="chat-div">
+        <!--Tady bude chat-->
+    </div>
+</div>
