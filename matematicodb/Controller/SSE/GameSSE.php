@@ -1,4 +1,5 @@
 <?php
+include_once "../../inc/bootstrap.php";
 header("Content-Type: text/event-stream");
 sendUpdatesFromQueue();
 
