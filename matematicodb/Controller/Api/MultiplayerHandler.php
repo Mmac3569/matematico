@@ -50,7 +50,7 @@ class MultiplayerHandler {
             echo json_encode($db_query2); 
             require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; 
             $sse = new EventQueuer(); 
-            $sse->queuePlayerUpdate($game_id, $db_query[0]["username"], "join"); 
+            $sse->queuePlayerUpdate(str_replace("x", "", $game_id), $db_query[0]["username"], "join"); 
         }
         exit;
     }
