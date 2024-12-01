@@ -67,7 +67,7 @@ function addPlayer(username, single) {
         document.getElementById("players-div").innerHTML += "<h5>" + username + "</h5>";
     } else if(!single) {
         for(let i = 0; i < username.length; i++) {
-            addPlayer(username[i]["username"]);
+            document.getElementById("players-div").innerHTML += "<h5>" + username + "</h5>";
         }
     }
 }
