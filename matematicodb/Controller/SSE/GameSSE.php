@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/event-stream");
-//sendUpdatesFromQueue();
+sendUpdatesFromQueue();
 
 function sendUpdatesFromQueue() {
     if(file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt") != "") {

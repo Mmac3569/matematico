@@ -45,12 +45,12 @@ class MultiplayerHandler {
             header("HTTP/1.1 404 No game with this code");
         } else {
             header("HTTP/1.1 200 OK");
-            header("Content-Type: application/json"); echo("ok\n");
-            $db_query2 = $database->select("SELECT `username` FROM `users` WHERE `in_game`='" . $game_id . "'"); echo("ok\n");
-            echo json_encode($db_query2); echo("ok\n");
-            require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; echo("ok\n");
-            $sse = new EventQueuer(); echo("ok\n");
-            $sse->queuePlayerUpdate($game_id, $db_query[0]["username"], "join"); echo("ok\n");
+            header("Content-Type: application/json");
+            $db_query2 = $database->select("SELECT `username` FROM `users` WHERE `in_game`='" . $game_id . "'"); 
+            echo json_encode($db_query2); 
+            require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; 
+            $sse = new EventQueuer(); 
+            $sse->queuePlayerUpdate($game_id, $db_query[0]["username"], "join"); 
         }
         exit;
     }
