@@ -51,6 +51,7 @@ async function showParty(master, players) {
             for(var i = 0; i < elements.length; i++) {
                 elements[i].disabled = false;
             }
+            console.log(players);
             addPlayer(players, true);
         } else {
             addPlayer(players, false);
@@ -59,6 +60,8 @@ async function showParty(master, players) {
 }
 
 function addPlayer(username, single) {
+    console.log(username);
+    console.log(single);
     if(single) {
         document.getElementById("players-div").innerHTML += "<h5>" + username + "</h5>";
     } else if(!single) {
