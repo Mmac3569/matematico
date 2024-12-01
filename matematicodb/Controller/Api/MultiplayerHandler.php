@@ -40,7 +40,7 @@ class MultiplayerHandler {
         $file = fopen(ROOT_PATH . "/game-codes.txt", "r");
         $content = fread($file, filesize(ROOT_PATH . "/game-codes.txt")); fclose($file);
         $db_query = $database->select("SELECT `username` FROM `users` WHERE `session_id`=" . $user_id);
-        $database->executeStatement("UPDATE `users` SET `in_game`='" . $game_id . "' WHERE `username`='" . $db_query[0]["username"] . "'");
+        $database->executeStatement("UPDATE `users` SET `in_game`='" . str_replace("x", "", $game_id) . "' WHERE `username`='" . $db_query[0]["username"] . "'");
         if (strpos($content, $game_id) === false || !$db_query) {
             header("HTTP/1.1 404 No game with this code");
         } else {
@@ -48,9 +48,9 @@ class MultiplayerHandler {
             header("Content-Type: application/json");
             $db_query2 = $database->select("SELECT `username` FROM `users` WHERE `in_game`='" . $game_id . "'");
             echo json_encode($db_query2);
-            //require_once ROOT_PATH . "/Controller/SSE/GameSSE.php";
-            //$sse = new GameSSE();
-            //$sse->queuePlayerUpdate($game_id, $db_query[0]["username"], "join");
+            require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php";
+            $sse = new EventQueuer();
+            $sse->queuePlayerUpdate($game_id, $db_query[0]["username"], "join");
         }
         exit;
     }
