@@ -54,6 +54,7 @@ async function showParty(master, players) {
             console.log(players);
             addPlayer(players, true);
         } else {
+            console.log(players);
             addPlayer(players, false);
         }
     }
