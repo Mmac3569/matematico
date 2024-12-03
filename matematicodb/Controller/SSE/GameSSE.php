@@ -9,7 +9,7 @@ function sendUpdatesFromQueue() {
         echo file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt");
         file_put_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt", "");
     } else {
-        header("HTTP/1.1 100 Pending");
+        //header("HTTP/1.1 100 Pending");
         sleep(3);
         header("HTTP/1.1 200 OK");
     }
