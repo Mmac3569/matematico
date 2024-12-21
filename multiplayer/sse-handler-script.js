@@ -1,7 +1,9 @@
 
 
 function handleSSE(event) {
+    console.log(event);
     let data = event.data.split("\n");
+    console.log(data);
     if(data[0] != game_code) {
         return 0;
     }
