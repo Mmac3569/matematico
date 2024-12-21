@@ -1,6 +1,7 @@
 
 
 function handleSSE(event) {
+    console.log("executed");
     console.log(event);
     let data = event.data.split("\n");
     console.log(data);
