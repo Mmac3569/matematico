@@ -14,5 +14,5 @@ function sendUpdatesFromQueue() {
     $update_part = substr($file_content, strpos($file_content, $username));
     echo substr($update_part, 0, strpos($update_part, "###"));
     header("HTTP/1.1 200 OK");
-    exit;
+    flush();
 }
