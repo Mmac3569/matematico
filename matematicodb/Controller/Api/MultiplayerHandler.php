@@ -49,8 +49,10 @@ class MultiplayerHandler {
             $db_query2 = $database->select("SELECT `username` FROM `users` WHERE `in_game`='" . str_replace("x", "", $game_id) . "'"); 
             echo json_encode($db_query2); 
             require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; 
-            $sse = new EventQueuer(); 
-            $sse->queuePlayerUpdate(str_replace("x", "", $game_id), $db_query[0]["username"], "join"); 
+            $sse = new EventQueuer();
+            for ($i = 0; $i < count($db_query2); $i++) {
+                $sse->queuePlayerUpdate($db_query2[$i]["username"], $db_query[0]["username"], "join");
+            } 
         }
         exit;
     }
