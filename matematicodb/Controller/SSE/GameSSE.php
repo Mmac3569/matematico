@@ -12,7 +12,7 @@ function sendUpdatesFromQueue() {
         $file_content = file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt");
     }
     $update_part = substr($file_content, strpos($file_content, $username));
-    echo substr($update_part, 0, strpos($update_part, "###"));
+    echo "data: " . substr($update_part, 0, strpos($update_part, "###"));
     header("HTTP/1.1 200 OK");
     flush();
 }
