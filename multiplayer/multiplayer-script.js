@@ -34,7 +34,9 @@ async function createNewGame() {
         let response_text = await response.text();
         game_code = response_text.split("\n")[0];
         sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php?username=" + user_id);
-        sse_source.onmessage = handleSSE;
+        sse_source.onmessage = function(event) {
+            console.log(event.data);
+        };
         showParty(true, response_text.split("\n")[1]);
     } else {
         alert("Přihlášení není platné");
