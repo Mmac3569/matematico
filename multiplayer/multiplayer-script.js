@@ -12,9 +12,9 @@ async function joinGame() {
     if(response.ok) {
         alert("join successful");
         game_code = code_input;
-        sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php");
-        sse_source.onmessage = handleSSE;
         let response_json = await response.json();
+        sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php?username=" + user_id);
+        sse_source.onmessage = handleSSE;
         console.log(response_json);
         showParty(false, response_json);
     } else {
