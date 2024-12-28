@@ -46,11 +46,14 @@ class MultiplayerHandler {
         } else {
             header("HTTP/1.1 200 OK");
             header("Content-Type: application/json");
-            $db_query2 = $database->select("SELECT `username`, `session_id` FROM `users` WHERE `in_game`='" . str_replace("x", "", $game_id) . "' AND `session_id`!=" . $user_id); 
+            $db_query2 = $database->select("SELECT `username`, `session_id` FROM `users` WHERE `in_game`='" . str_replace("x", "", $game_id) . "'"); 
             echo json_encode($db_query2); 
             require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; 
             $sse = new EventQueuer();
             for ($i = 0; $i < count($db_query2); $i++) {
+                if ($db_query2[$i]["session_id"] == $user_id) {
+                    continue;
+                }
                 $sse->queuePlayerUpdate($db_query2[$i]["session_id"], $db_query[0]["username"], "join");
             } 
         }
