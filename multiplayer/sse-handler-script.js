@@ -17,8 +17,8 @@ function handleSSE(event) {
 
 function handlePlayerUpdate(data) {
     if(data[3] == "join") {
-        document.getElementById("players-div").innerHTML += data[2];
+        addPlayer(data[2], true);
     } else if (data[3] == "leave") {
-
+        
     }
 }
