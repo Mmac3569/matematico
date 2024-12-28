@@ -1,12 +1,9 @@
 
 
 function handleSSE(event) {
-    let data = event.data.split("||");
+    var data = event.data.split("||");
     console.log(event.data);
     console.log(data);
-    if(data[0] != game_code) {
-        return 0;
-    }
     switch(data[1]) {
         case "PlayerUpdate":
             handlePlayerUpdate(data);
