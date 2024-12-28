@@ -39,9 +39,7 @@ async function createNewGame() {
             console.log("sse not supported");
           }
         sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php?username=" + user_id);
-        sse_source.onmessage = function(event) {
-            console.log("message")
-        };
+        sse_source.onmessage = handleSSE;
         showParty(true, response_text.split("\n")[1]);
     } else {
         alert("Přihlášení není platné");
