@@ -8,7 +8,8 @@ function handleSSE(event) {
         case "PlayerUpdate":
             handlePlayerUpdate(data);
             break;
-        case "GameStart":
+        case "StartUpdate":
+            handleStart(data);
             break;
         default:
             break;
@@ -20,5 +21,13 @@ function handlePlayerUpdate(data) {
         addPlayer(data[2], true);
     } else if (data[3] == "leave") {
         
+    }
+}
+
+async function handleStart(data) {
+    let response = await fetch("http://matematico.great-site.net/multiplayer/game.html?v=" + Date.now());
+    if(response.ok) {
+        document.body.innerHTML = await response.text();
+        document.getElementById("header").innerHTML += game_code;
     }
 }

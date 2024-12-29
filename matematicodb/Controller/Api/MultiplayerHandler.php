@@ -11,6 +11,7 @@ class MultiplayerHandler {
                 $this->joinGame($query["code"], $query["id"]);
                 break;
             case "start":
+                $this->startGame($query["code"], $query["speed"], $query["mode"]);
                 break;
             default:
                 header("HTTP/1.1 404 Not Found");
@@ -60,12 +61,20 @@ class MultiplayerHandler {
         exit;
     }
 
-    function startGame($game_id) {
+    function startGame($game_id, $speed, $mode) {
         $file = fopen(ROOT_PATH . "/game-codes.txt", "r");
         $content = fread($file, filesize(ROOT_PATH . "/game-codes.txt")); fclose($file);
         $content = str_replace($game_id, "", $content);
         $file = fopen(ROOT_PATH . "/game-codes.txt", "w");
         fwrite($file, $content); fclose();
+        $database = new Database();
+        $db_query = $database->select("SELECT `session_id` FROM `users` WHERE `in_game`='" . $game_id . "'");
+        require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; 
+        $sse = new EventQueuer();
+        for ($i = 0; $i < count($db_query); $i++) {
+            $sse->queueStartUpdate($db_query[$i]["session_id"], $speed, $mode);
+        }
+        exit;
     }
 
     function generateGameId() {
