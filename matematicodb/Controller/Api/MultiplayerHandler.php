@@ -67,6 +67,7 @@ class MultiplayerHandler {
         $content = str_replace($game_id, "", $content);
         $file = fopen(ROOT_PATH . "/game-codes.txt", "w");
         fwrite($file, $content); fclose();
+        $game_id = str_replace("x", "", $game_id);
         $database = new Database();
         $db_query = $database->select("SELECT `session_id` FROM `users` WHERE `in_game`='" . $game_id . "'");
         require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; 
