@@ -62,18 +62,18 @@ class MultiplayerHandler {
     }
 
     function startGame($game_id, $speed, $mode) {
-        $file = fopen(ROOT_PATH . "/game-codes.txt", "r");
-        $content = fread($file, filesize(ROOT_PATH . "/game-codes.txt")); fclose($file);
-        $content = str_replace($game_id, "", $content);
-        $file = fopen(ROOT_PATH . "/game-codes.txt", "w");
-        fwrite($file, $content); fclose();
-        $game_id = str_replace("x", "", $game_id);
-        $database = new Database();
-        $db_query = $database->select("SELECT `session_id` FROM `users` WHERE `in_game`='" . $game_id . "'");
-        require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; 
-        $sse = new EventQueuer();
+        $file = fopen(ROOT_PATH . "/game-codes.txt", "r"); echo "ok\n";
+        $content = fread($file, filesize(ROOT_PATH . "/game-codes.txt")); fclose($file); echo "ok\n";
+        $content = str_replace($game_id, "", $content); echo "ok\n";
+        $file = fopen(ROOT_PATH . "/game-codes.txt", "w"); echo "ok\n";
+        fwrite($file, $content); fclose(); echo "ok\n";
+        $game_id = str_replace("x", "", $game_id); echo "ok\n";
+        $database = new Database(); echo "ok\n";
+        $db_query = $database->select("SELECT `session_id` FROM `users` WHERE `in_game`='" . $game_id . "'"); echo "ok\n";
+        require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; echo "ok\n";
+        $sse = new EventQueuer(); echo "ok\n";
         for ($i = 0; $i < count($db_query); $i++) {
-            $sse->queueStartUpdate($db_query[$i]["session_id"], $speed, $mode);
+            $sse->queueStartUpdate($db_query[$i]["session_id"], $speed, $mode); echo "ok\n";
         }
         header("HTTP/1.1 200 OK");
         exit;
