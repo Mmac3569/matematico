@@ -50,9 +50,9 @@ async function createNewGame() {
 function startGame() {
     let game_for_zero = document.getElementById("game-for-zero").checked;
     if(game_for_zero) {
-        fetch(`http://matematico.great-site.net/matematicodb/index.php/multiplayer/start?code=x${game_code}x&speed=${speed}&mode=game_for_zero`);
+        fetch(`https://matematico.great-site.net/matematicodb/index.php/multiplayer/start?code=x${game_code}x&speed=${speed}&mode=game_for_zero`);
     } else {
-        fetch(`http://matematico.great-site.net/matematicodb/index.php/multiplayer/start?code=x${game_code}x&speed=${speed}&mode=classic`);
+        fetch(`https://matematico.great-site.net/matematicodb/index.php/multiplayer/start?code=x${game_code}x&speed=${speed}&mode=classic`);
     }
 }
 
