@@ -25,7 +25,7 @@ function handlePlayerUpdate(data) {
 }
 
 async function handleStart(data) {
-    let response = await fetch("http://matematico.great-site.net/multiplayer/game.html?v=" + Date.now());
+    let response = await fetch("https://matematico.great-site.net/multiplayer/game.html?v=" + Date.now());
     if(response.ok) {
         document.body.innerHTML = await response.text();
         document.getElementById("header").innerHTML += game_code;
