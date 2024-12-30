@@ -6,14 +6,14 @@ var response;
 
 async function loginBtClick() {
     getValues();
-    response = await fetch(`http://matematico.great-site.net/matematicodb/index.php/login?username=${username_input}&password=${password_input}`, {
+    response = await fetch(`https://matematico.great-site.net/matematicodb/index.php/login?username=${username_input}&password=${password_input}`, {
         headers: {
             "Accept": "application/json, text/html, */*",
         }
     });
     if(response.ok) {
         let json = await response.json();
-        window.location.href = "http://matematico.great-site.net?id=" + json;
+        window.location.href = "https://matematico.great-site.net?id=" + json;
     } else {
         alert("Invalid password or username");
     }
@@ -21,7 +21,7 @@ async function loginBtClick() {
 
 async function registerBtClick() {
     getValues();
-    response = await fetch(`http://matematico.great-site.net/matematicodb/index.php/register?username=${new_username_input}&password=${new_password_input}`);
+    response = await fetch(`https://matematico.great-site.net/matematicodb/index.php/register?username=${new_username_input}&password=${new_password_input}`);
     if (response.ok) {
         alert("You've been registered successfuly! You can login now.");
     } else {
