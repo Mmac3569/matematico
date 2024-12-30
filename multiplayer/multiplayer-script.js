@@ -1,5 +1,6 @@
 var game_code;
 var sse_source;
+var speed;
 
 async function joinGame() {
     let code_input = document.getElementById("code-in").value;
@@ -13,7 +14,7 @@ async function joinGame() {
         alert("join successful");
         game_code = code_input;
         let response_json = await response.json();
-        sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php?username=" + user_id);
+        sse_source = new EventSource("https://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php?username=" + user_id);
         sse_source.onmessage = handleSSE;
         console.log(response_json);
         showParty(false, response_json);
@@ -38,7 +39,7 @@ async function createNewGame() {
           } else {
             console.log("sse not supported");
           }
-        sse_source = new EventSource("http://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php?username=" + user_id);
+        sse_source = new EventSource("https://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php?username=" + user_id);
         sse_source.onmessage = handleSSE;
         showParty(true, response_text.split("\n")[1]);
     } else {
@@ -47,13 +48,16 @@ async function createNewGame() {
 }
 
 function startGame() {
-    let speed = document.getElementById("speed").value;
     let game_for_zero = document.getElementById("game-for-zero").checked;
     if(game_for_zero) {
         fetch(`http://matematico.great-site.net/matematicodb/index.php/multiplayer/start?code=x${game_code}x&speed=${speed}&mode=game_for_zero`);
     } else {
         fetch(`http://matematico.great-site.net/matematicodb/index.php/multiplayer/start?code=x${game_code}x&speed=${speed}&mode=classic`);
     }
+}
+
+function speedChanged(new_speed) {
+    speed = new_speed;
 }
 
 async function showParty(master, players) {
