@@ -66,7 +66,7 @@ class MultiplayerHandler {
         $content = fread($file, filesize(ROOT_PATH . "/game-codes.txt")); fclose($file); echo "ok\n";
         $content = str_replace($game_id, "", $content); echo "ok\n";
         $file = fopen(ROOT_PATH . "/game-codes.txt", "w"); echo "ok\n";
-        fwrite($file, $content); fclose(); echo "ok\n";
+        fwrite($file, $content); fclose($file); echo "ok\n";
         $game_id = str_replace("x", "", $game_id); echo "ok\n";
         $database = new Database(); echo "ok\n";
         $db_query = $database->select("SELECT `session_id` FROM `users` WHERE `in_game`='" . $game_id . "'"); echo "ok\n";
