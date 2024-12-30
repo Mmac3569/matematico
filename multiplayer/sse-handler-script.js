@@ -29,5 +29,6 @@ async function handleStart(data) {
     if(response.ok) {
         document.body.innerHTML = await response.text();
         document.getElementById("header").innerHTML += game_code;
+        sse_source.close();
     }
 }

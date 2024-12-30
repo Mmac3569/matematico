@@ -46,6 +46,16 @@ async function createNewGame() {
     }
 }
 
+function startGame() {
+    let speed = document.getElementById("speed").value;
+    let game_for_zero = document.getElementById("game-for-zero").checked;
+    if(game_for_zero) {
+        fetch(`http://matematico.great-site.net/matematicodb/index.php/multiplayer/start?code=x${game_code}x&speed=${speed}&mode=game_for_zero`);
+    } else {
+        fetch(`http://matematico.great-site.net/matematicodb/index.php/multiplayer/start?code=x${game_code}x&speed=${speed}&mode=classic`);
+    }
+}
+
 async function showParty(master, players) {
     let response = await fetch("http://matematico.great-site.net/multiplayer/party.html?v=" + Date.now());
     if(response.ok) {

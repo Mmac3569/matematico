@@ -74,6 +74,7 @@ class MultiplayerHandler {
         for ($i = 0; $i < count($db_query); $i++) {
             $sse->queueStartUpdate($db_query[$i]["session_id"], $speed, $mode);
         }
+        header("HTTP/1.1 200 OK");
         exit;
     }
 
