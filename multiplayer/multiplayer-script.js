@@ -1,6 +1,6 @@
 var game_code;
 var sse_source;
-var speed;
+var speed = 5;
 
 async function joinGame() {
     let code_input = document.getElementById("code-in").value;
