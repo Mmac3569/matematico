@@ -9,8 +9,8 @@ function sendUpdatesFromQueue() {
     $username = $query["username"]; echo "ok";
     $file_content = file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt"); echo "ok";
     while(!strpos($file_content, $username)) {
-        sleep(5); echo "ok";
-        $file_content = file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt"); echo "ok";
+        sleep(5);
+        $file_content = file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt"); echo "loop";
     }
     $update_part = substr($file_content, strpos($file_content, $username)); echo "ok";
     $update_data = substr($update_part, 0, strpos($update_part, "###")); echo "ok";
