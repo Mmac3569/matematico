@@ -10,6 +10,8 @@ function sendUpdatesFromQueue() {
     $file_content = file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt"); echo "ok";
     echo $file_content;
     echo $username;
+    echo strpos($file_content, $username);
+    echo !strpos($file_content, $username);
     while(!strpos($file_content, $username)) {
         sleep(5);
         $file_content = file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt"); echo "loop";
