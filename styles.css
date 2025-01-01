@@ -8,6 +8,7 @@
     font-size: xx-large;
     font-weight: bold;
     vertical-align: middle;
+    margin: 0 0 0 0;
 }
 
 .counting-square {
@@ -31,6 +32,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    margin-top: 4%;
 }
 
 article {
