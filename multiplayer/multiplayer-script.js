@@ -67,7 +67,7 @@ async function showParty(master, players) {
         document.getElementById("header").innerHTML += game_code;
         if(master) {
             let elements = document.getElementsByClassName("game-controls");
-            for(var i = 0; i < elements.length; i++) {
+            for(var i = 0; i <= elements.length; i++) {
                 elements[i].disabled = false;
             }
             console.log(players);

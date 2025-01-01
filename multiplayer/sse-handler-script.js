@@ -46,8 +46,7 @@ async function handleStart(data) {
         let script3 = document.createElement('script');
         script3.src = 'https://matematico.great-site.net/user-script.js?v=' + Date.now();
         document.head.appendChild(script3);
-
-        init(); 
+        
         sse_source.close();
     }
 }
