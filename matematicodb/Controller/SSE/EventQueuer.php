@@ -7,6 +7,14 @@ class EventQueuer {
     }
     
     function queueStartUpdate($to, $speed, $mode) {
-        file_put_contents($this->eventqueue_file_path, $to . "||StartUpdate||" . $speed . "||" . $mode . "\n###\n", FILE_APPEND | LOCK_EX);
+        file_put_contents($this->eventqueue_file_path, $to . "||StartUpdate||" . $speed . "||" . $mode . "||" . implode(",", $this->generateNumbers()) . "\n###\n", FILE_APPEND | LOCK_EX);
+    }
+
+    function generateNumbers() {
+        $numbers = [25];
+        for ($i = 0; $i < 25; $i++) {
+            $numbers[$i] = rand(1, 13);
+        }
+        return $numbers;
     }
 }
