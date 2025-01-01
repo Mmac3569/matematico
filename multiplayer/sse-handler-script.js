@@ -25,6 +25,7 @@ function handlePlayerUpdate(data) {
 }
 
 async function handleStart(data) {
+    game_properties = [data[2], data[3], data[4]];
     let response = await fetch("https://matematico.great-site.net/multiplayer/game.html?v=" + Date.now());
     if(response.ok) {
         document.body.innerHTML = await response.text();
@@ -47,7 +48,6 @@ async function handleStart(data) {
         script3.src = 'https://matematico.great-site.net/user-script.js?v=' + Date.now();
         document.head.appendChild(script3);
 
-        game_properties = [data[2], data[3], data[4]];
         sse_source.close();
     }
 }
