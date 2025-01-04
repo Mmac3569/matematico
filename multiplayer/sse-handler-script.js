@@ -36,19 +36,17 @@ async function handleStart(data) {
         styles.href = 'https://matematico.great-site.net/styles.css?v=' + Date.now();
         document.head.appendChild(styles);
 
-        /* let script1 = document.createElement('script');
-        script1.src = 'https://matematico.great-site.net/script.js?v=' + Date.now();
-        document.head.appendChild(script1); */
-
         let script2 = document.createElement('script');
         script2.src = 'https://matematico.great-site.net/counting-script.js?v=' + Date.now();
         document.head.appendChild(script2);
 
         let script3 = document.createElement('script');
         script3.src = 'https://matematico.great-site.net/user-script.js?v=' + Date.now();
+        script3.onload = function() {
+            init();
+        }
         document.head.appendChild(script3);
 
         sse_source.close();
-        document.body.onload = function() { init(); };
     }
 }
