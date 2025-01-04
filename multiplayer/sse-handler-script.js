@@ -49,6 +49,6 @@ async function handleStart(data) {
         document.head.appendChild(script3);
 
         sse_source.close();
-        document.body = function() { init(); };
+        document.body.onload = function() { init(); };
     }
 }
