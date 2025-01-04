@@ -19,6 +19,8 @@ var wait_for_next = true;
 var game_for_zero;
 var numbers = [];
 
+init();
+
 function init() {
     grid_buttons = document.getElementsByClassName("button");
     counting_squares = document.getElementsByClassName("counting-square");
@@ -41,11 +43,17 @@ function init() {
 }
 
 function start() {
-    setTimeout(() => { number_display.innerHTML = 3 }, 1000);
-    setTimeout(() => { number_display.innerHTML = 2 }, 1000);
-    setTimeout(() => { number_display.innerHTML = 1 }, 1000);
-    setTimeout(() => { number_display.innerHTML = "GO!" }, 1000);
-    setTimeout(nextNumber, 1000);
+    let count = 3;
+    
+    const intervalId = setInterval(() => {
+        number_display.innerHTML = count;
+        count--;
+
+        if (count === 0) {
+            clearInterval(intervalId);
+            console.log("GO!");
+        }
+    }, 1000);
     game_loop_interval = window.setInterval(gameLoop, speed * 10);
     game_running = true;
 }
@@ -67,7 +75,7 @@ function gameLoop() {
 
 function nextNumber() {
     if(remaining_numbers > 0) {
-        return numbers.shift();
+        number_display.innerHTML = numbers.shift();
     } else {
         window.clearInterval(game_loop_interval);
         can_place = false;
