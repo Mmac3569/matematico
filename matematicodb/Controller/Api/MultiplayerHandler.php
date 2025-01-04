@@ -13,6 +13,9 @@ class MultiplayerHandler {
             case "start":
                 $this->startGame($query["code"], $query["speed"], $query["mode"]);
                 break;
+            case "result":
+
+                break;
             default:
                 header("HTTP/1.1 404 Not Found");
                 echo "Not found";
@@ -75,6 +78,21 @@ class MultiplayerHandler {
         for ($i = 0; $i < count($db_query); $i++) {
             $sse->queueStartUpdate($db_query[$i]["session_id"], $speed, $mode);
         }
+        header("HTTP/1.1 200 OK");
+        exit;
+    }
+
+    function gameEnd($game_id, $user_id, $score, $mode) {
+        $database = new Database();
+        $db_query = $database->select("SELECT COUNT(*) FROM `users` WHERE `in_game`='" . $game_id . "'");
+        require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php";
+        $sse = new EventQueuer();
+        if($db_query[0]["COUNT(*)"] <= 1) {
+            $sse->sendResults($game_id, $user_id, $score, $mode);
+        } else {
+            $sse->putResult($user_id, $game_id, $score);
+        }
+        $database->executeStatement("UPDATE `users` SET `in_game`='' WHERE `session_id`=" . $user_id);
         header("HTTP/1.1 200 OK");
         exit;
     }
