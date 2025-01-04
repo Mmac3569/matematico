@@ -51,11 +51,14 @@ function start() {
 
         if (count === 0) {
             clearInterval(intervalId);
-            console.log("GO!");
+            number_display.innerHTML = "GO!";
+            setTimeout(() => {
+                game_running = true;
+                can_place = true;
+                game_loop_interval = window.setInterval(gameLoop, speed * 10);
+            }, 1000);
         }
     }, 1000);
-    game_loop_interval = window.setInterval(gameLoop, speed * 10);
-    game_running = true;
 }
 
 function gameLoop() {
@@ -76,6 +79,9 @@ function gameLoop() {
 function nextNumber() {
     if(remaining_numbers > 0) {
         number_display.innerHTML = numbers.shift();
+        remaining_numbers--;
+        remaining_display.innerHTML = "Zbývá čísel: " + remaining_numbers;
+        can_place = true;
     } else {
         window.clearInterval(game_loop_interval);
         can_place = false;
