@@ -46,9 +46,6 @@ function start() {
     let count = 3;
     
     const intervalId = setInterval(() => {
-        number_display.innerHTML = count;
-        count--;
-
         if (count === 0) {
             clearInterval(intervalId);
             number_display.innerHTML = "GO!";
@@ -57,7 +54,10 @@ function start() {
                 can_place = true;
                 game_loop_interval = window.setInterval(gameLoop, speed * 10);
             }, 1000);
+        } else {
+            number_display.innerHTML = count;
         }
+        count--;
     }, 1000);
 }
 
@@ -78,7 +78,8 @@ function gameLoop() {
 
 function nextNumber() {
     if(remaining_numbers > 0) {
-        number_display.innerHTML = numbers.shift();
+        current_number = numbers.shift();
+        number_display.innerHTML = current_number;
         remaining_numbers--;
         remaining_display.innerHTML = "Zbývá čísel: " + remaining_numbers;
         can_place = true;
