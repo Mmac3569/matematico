@@ -64,8 +64,8 @@ function displayResults(data) {
         </tr>`;
     }
     let end_brs = document.getElementsByClassName("end-br");
-    end_brs[0].parentNode.removeChild(end_brs[0]);
-    end_brs[1].parentNode.removeChild(end_brs[1]);
+    //end_brs[0].parentNode.removeChild(end_brs[0]);
+    //end_brs[1].parentNode.removeChild(end_brs[1]);
     document.getElementById("results-table").hidden = false;
     document.getElementById("results-header").hidden = false;
     document.getElementById("results-table").parentNode.appendChild(document.createElement("br"));
