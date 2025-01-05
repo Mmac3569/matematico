@@ -35,7 +35,7 @@ class EventQueuer {
         for ($i = 0; $i < count($players); $i++) {
             echo $players[$i];
             echo $players[$i] . "||Results||" .  $sorted_string;
-            file_put_contents($this->$eventqueue_file_path, $players[$i] . "||Results||" .  $sorted_string, FILE_APPEND | LOCK_EX); echo "loop5\n";
+            file_put_contents($this->$eventqueue_file_path, $players[$i] . "||Results||" .  $sorted_string . "\n###\n", FILE_APPEND | LOCK_EX); echo "loop5\n";
         }
     }
 
