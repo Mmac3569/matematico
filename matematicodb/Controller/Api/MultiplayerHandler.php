@@ -88,6 +88,7 @@ class MultiplayerHandler {
         require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php"; echo "ok\n";
         $sse = new EventQueuer(); echo "ok\n";
         echo json_encode($db_query);
+        echo $db_query[0]["COUNT(*)"];
         if($db_query[0]["COUNT(*)"] <= 1) {
             $sse->sendResults($game_id, $user_id, $score, $mode); echo "ok\n";
         } else {
