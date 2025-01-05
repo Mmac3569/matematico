@@ -92,7 +92,7 @@ class MultiplayerHandler {
         } else {
             $sse->putResult($username, $game_id, $score);
         }
-        $database->executeStatement("UPDATE `users` SET `in_game`='' WHERE `session_id`=" . $username);
+        $database->executeStatement("UPDATE `users` SET `in_game`='' WHERE `username`=" . $username);
         header("HTTP/1.1 200 OK");
         exit;
     }
