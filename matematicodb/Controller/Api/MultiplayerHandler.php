@@ -14,7 +14,7 @@ class MultiplayerHandler {
                 $this->startGame($query["code"], $query["speed"], $query["mode"]);
                 break;
             case "result":
-                $this->gameEnd($query["code"], $query["id"], $query["score"], $query["mode"]);
+                $this->gameEnd($query["code"], $query["username"], $query["score"], $query["mode"]);
                 break;
             default:
                 header("HTTP/1.1 404 Not Found");
@@ -82,17 +82,17 @@ class MultiplayerHandler {
         exit;
     }
 
-    function gameEnd($game_id, $user_id, $score, $mode) {
+    function gameEnd($game_id, $username, $score, $mode) {
         $database = new Database();
         $db_query = $database->select("SELECT COUNT(*) FROM `users` WHERE `in_game`='" . $game_id . "'");
         require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php";
         $sse = new EventQueuer();
         if($db_query[0]["COUNT(*)"] <= 1) {
-            $sse->sendResults($game_id, $user_id, $score, $mode);
+            $sse->sendResults($game_id, $username, $score, $mode);
         } else {
-            $sse->putResult($user_id, $game_id, $score);
+            $sse->putResult($username, $game_id, $score);
         }
-        $database->executeStatement("UPDATE `users` SET `in_game`='' WHERE `session_id`=" . $user_id);
+        $database->executeStatement("UPDATE `users` SET `in_game`='' WHERE `session_id`=" . $username);
         header("HTTP/1.1 200 OK");
         exit;
     }
