@@ -33,7 +33,7 @@ class EventQueuer {
         $sorted_string = implode(" ", $sorted_pairs); echo "ok\n";
         echo json_encode($players); echo $sorted_string;
         for ($i = 0; $i < count($players); $i++) {
-            file_put_contents($this->$eventqueue_file_path, $players[$i] . "||Results||" .  $sorted_string); echo "loop5\n";
+            file_put_contents($this->$eventqueue_file_path, $players[$i] . "||Results||" .  $sorted_string, FILE_APPEND | LOCK_EX); echo "loop5\n";
         }
     }
 
