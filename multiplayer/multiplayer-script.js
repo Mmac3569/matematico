@@ -78,7 +78,6 @@ async function showParty(master, players) {
     } else {
         username = players[0]["username"];
     }
-    username = players[0]["username"];
     let response = await fetch("https://matematico.great-site.net/multiplayer/party.html?v=" + Date.now());
     if(response.ok) {
         document.body.innerHTML = await response.text();
