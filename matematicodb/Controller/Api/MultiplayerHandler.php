@@ -14,7 +14,7 @@ class MultiplayerHandler {
                 $this->startGame($query["code"], $query["speed"], $query["mode"]);
                 break;
             case "result":
-                $this->gameEnd($query["code"], $query["username"], $query["score"], $query["mode"]);
+                $this->gameEnd($query["code"], $query["username"], $query["id"], $query["score"], $query["mode"]);
                 break;
             default:
                 header("HTTP/1.1 404 Not Found");
