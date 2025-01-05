@@ -82,15 +82,15 @@ class MultiplayerHandler {
         exit;
     }
 
-    function gameEnd($game_id, $username, $score, $mode) {
+    function gameEnd($game_id, $username, $user_id, $score, $mode) {
         $database = new Database();
         $db_query = $database->select("SELECT COUNT(*) FROM `users` WHERE `in_game`='" . $game_id . "'");
         require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php";
         $sse = new EventQueuer();
         if($db_query[0]["COUNT(*)"] <= 1) {
-            $sse->sendResults($game_id, $username, $score, $mode);
+            $sse->sendResults($game_id, $username, $user_id, $score, $mode);
         } else {
-            $sse->putResult($username, $game_id, $score);
+            $sse->putResult($username, $user_id, $game_id, $score);
         }
         $database->executeStatement("UPDATE `users` SET `in_game`='' WHERE `username`='" . $username . "'");
         header("HTTP/1.1 200 OK");
