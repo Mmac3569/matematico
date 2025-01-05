@@ -60,9 +60,9 @@ function startGame() {
 function sendResults(score) {
     let user_id = new URLSearchParams(window.location.search).get("id");
     if(game_for_zero) {
-        fetch(`https://matematico.great-site.net/matematicodb/index.php/multiplayer/results?code=${game_code}&username=${username}&id=${user_id}&score=${score}&mode=game_for_zero`);
+        fetch(`https://matematico.great-site.net/matematicodb/index.php/multiplayer/result?code=${game_code}&username=${username}&id=${user_id}&score=${score}&mode=game_for_zero`);
     } else {
-        fetch(`https://matematico.great-site.net/matematicodb/index.php/multiplayer/results?code=${game_code}&username=${username}&id=${user_id}&score=${score}&mode=classic`);
+        fetch(`https://matematico.great-site.net/matematicodb/index.php/multiplayer/result?code=${game_code}&username=${username}&id=${user_id}&score=${score}&mode=classic`);
     }
     sse_source = new EventSource("https://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php?username=" + user_id);
     sse_source.onmessage = handleSSE;
