@@ -58,8 +58,8 @@ function displayResults(data) {
     for (let i = 0; i < players.length; i++) {
         document.getElementById("results-table").innerHTML += 
         `<tr>
-            <td class="combination">${i}</td>
-            <td class="combination">${players[i].split("#")[0]}}</td>
+            <td class="combination">${i+1}</td>
+            <td class="combination">${players[i].split("#")[0]}</td>
             <td>${players[i].split("#")[1]}</td>
         </tr>`;
     }
