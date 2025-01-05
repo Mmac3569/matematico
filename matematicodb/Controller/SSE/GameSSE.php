@@ -12,9 +12,9 @@ function sendUpdatesFromQueue() {
         sleep(5);
         $file_content = file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt");
     }
-    $update_part = substr($file_content, strpos($file_content, $username)); 
-    $update_data = substr($update_part, 0, strpos($update_part, "###")); 
-    echo "data: " . $update_data . PHP_EOL . PHP_EOL; 
+    $update_part = substr($file_content, strpos($file_content, $username));
+    $update_data = substr($update_part, 0, strpos($update_part, "###"));
+    echo "data: " . $update_data . PHP_EOL . PHP_EOL;
     $file_content = str_replace($update_data . "###\n", '', $file_content);
     file_put_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt", $file_content);
     ob_flush();

@@ -2,7 +2,6 @@ var game_properties;
 
 function handleSSE(event) {
     var data = event.data.split("||");
-    console.log(event.data);
     console.log(data);
     switch(data[1]) {
         case "PlayerUpdate":
@@ -10,6 +9,9 @@ function handleSSE(event) {
             break;
         case "StartUpdate":
             handleStart(data);
+            break;
+        case "Results":
+            displayResults(data);
             break;
         default:
             break;
@@ -49,4 +51,24 @@ async function handleStart(data) {
 
         sse_source.close();
     }
+}
+
+function displayResults(data) {
+    let players = data[2].split(" ");
+    for (let i = 0; i < players.length; i++) {
+        document.getElementById("results-table").innerHTML += 
+        `<tr>
+            <td class="combination">${i}</td>
+            <td class="combination">${players[i].split("#")[0]}}</td>
+            <td>${players[i].split("#")[1]}</td>
+        </tr>`;
+    }
+    let end_brs = document.getElementsByClassName("end-br");
+    end_brs[0].parentNode.removeChild(end_brs[0]);
+    end_brs[1].parentNode.removeChild(end_brs[1]);
+    document.getElementById("results-table").hidden = false;
+    document.getElementById("results-header").hidden = false;
+    document.getElementById("results-table").parentNode.appendChild(document.createElement("br"));
+    document.getElementById("results-table").parentNode.appendChild(document.createElement("br"));
+    document.getElementById("results-header").scrollIntoView({ behavior: 'smooth' });
 }
