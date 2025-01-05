@@ -16,23 +16,23 @@ class EventQueuer {
     }
 
     function sendResults($game, $last_user, $last_score, $mode) {
-        $file_content = file_get_contents($this->$game_results_folder . $game . ".txt") . $last_user . "||" . $last_score;
-        $pairs = explode("\n", $file_content);
-        $map = [];
-        $players = [];
+        $file_content = file_get_contents($this->$game_results_folder . $game . ".txt") . $last_user . "||" . $last_score; echo "ok\n";
+        $pairs = explode("\n", $file_content); echo "ok\n";
+        $map = []; echo "ok\n";
+        $players = []; echo "ok\n";
         foreach ($pairs as $pair) {
-            list($key, $value) = explode("||", $pair);
-            $map[$key] = $value;
-            $players[] = $key;
+            list($key, $value) = explode("||", $pair); echo "ok\n";
+            $map[$key] = $value; echo "ok\n";
+            $players[] = $key; echo "ok\n";
         }
-        arsort($map);
-        $sorted_pairs = [];
+        arsort($map); echo "ok\n";
+        $sorted_pairs = []; echo "ok\n";
         foreach ($map as $key => $value) {
-            $sorted_pairs[] = $key . "#" . $value;
+            $sorted_pairs[] = $key . "#" . $value; echo "ok\n";
         }
-        $sorted_string = implode(" ", $sorted_pairs);
+        $sorted_string = implode(" ", $sorted_pairs); echo "ok\n";
         for ($i = 0; $i < count($players); $i++) {
-            file_put_contents($this->$eventqueue_file_path, $players[$i] . "||Results||" .  $sorted_string);
+            file_put_contents($this->$eventqueue_file_path, $players[$i] . "||Results||" .  $sorted_string); echo "ok\n";
         }
     }
 
