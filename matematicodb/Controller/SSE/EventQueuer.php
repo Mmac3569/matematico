@@ -21,18 +21,18 @@ class EventQueuer {
         $map = []; echo "ok\n";
         $players = []; echo "ok\n";
         foreach ($pairs as $pair) {
-            list($key, $value) = explode("||", $pair); echo "ok\n";
-            $map[$key] = $value; echo "ok\n";
-            $players[] = $key; echo "ok\n";
+            list($key, $value) = explode("||", $pair); echo "loop1\n";
+            $map[$key] = $value; echo "loop2\n";
+            $players[] = $key; echo "loop3\n";
         }
         arsort($map); echo "ok\n";
         $sorted_pairs = []; echo "ok\n";
         foreach ($map as $key => $value) {
-            $sorted_pairs[] = $key . "#" . $value; echo "ok\n";
+            $sorted_pairs[] = $key . "#" . $value; echo "loop4\n";
         }
         $sorted_string = implode(" ", $sorted_pairs); echo "ok\n";
         for ($i = 0; $i < count($players); $i++) {
-            file_put_contents($this->$eventqueue_file_path, $players[$i] . "||Results||" .  $sorted_string); echo "ok\n";
+            file_put_contents($this->$eventqueue_file_path, $players[$i] . "||Results||" .  $sorted_string); echo "loop5\n";
         }
     }
 
