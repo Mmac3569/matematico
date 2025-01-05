@@ -31,7 +31,6 @@ class EventQueuer {
             $sorted_pairs[] = $key . "#" . $value;
         }
         $sorted_string = implode(" ", $sorted_pairs);
-        echo json_encode($players); echo $sorted_string;
         for ($i = 0; $i < count($players); $i++) {
             file_put_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt", strval($players[$i]) . "||Results||" .  strval($sorted_string) . "\n###\n", FILE_APPEND | LOCK_EX);
         }
