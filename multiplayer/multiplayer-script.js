@@ -1,5 +1,6 @@
 var game_code;
 var sse_source;
+var username;
 var speed = 5;
 
 async function joinGame() {
@@ -56,11 +57,20 @@ function startGame() {
     }
 }
 
+function sendResults(score) {
+    if(game_for_zero) {
+        fetch(`https://matematico.great-site.net/matematicodb/index.php/multiplayer/results?code=${game_code}&username=${username}&id=${user_id}&score=${score}&mode=game_for_zero`);
+    } else {
+        fetch(`https://matematico.great-site.net/matematicodb/index.php/multiplayer/results?code=${game_code}&username=${username}&id=${user_id}&score=${score}&mode=classic`);
+    }
+}
+
 function speedChanged(new_speed) {
     speed = new_speed;
 }
 
 async function showParty(master, players) {
+    username = players[0]["username"];
     let response = await fetch("https://matematico.great-site.net/multiplayer/party.html?v=" + Date.now());
     if(response.ok) {
         document.body.innerHTML = await response.text();

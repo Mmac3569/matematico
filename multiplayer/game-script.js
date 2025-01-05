@@ -4,7 +4,6 @@ var number_display = document.getElementById("number-display");
 var remaining_display = document.getElementById("remaining-display");
 var time_progress = document.getElementById("time-progress");
 var high_score_display = document.getElementById("high-score-display");
-var speed;
 var remaining_numbers = 25;
 var current_number = 0;
 var game_loop_interval;
