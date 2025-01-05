@@ -86,8 +86,10 @@ function nextNumber() {
         window.clearInterval(game_loop_interval);
         can_place = false;
         console.log(remaining_numbers);
-        number_display.innerHTML = calculateScore();
+        let score = calculateScore();
+        number_display.innerHTML = score;
         game_running = false;
+        sendResults(score);
     }
 }
 
