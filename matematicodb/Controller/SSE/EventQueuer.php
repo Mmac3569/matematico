@@ -12,6 +12,7 @@ class EventQueuer {
     }
 
     function putResult($from, $user_id, $game, $score) {
+        echo $this->$game_results_folder . $game . ".txt";
         if(!file_exists($this->$game_results_folder . $game . ".txt")) {
             file_put_contents($this->$game_results_folder . $game . ".txt", "");
         }
