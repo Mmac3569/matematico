@@ -20,6 +20,7 @@ class EventQueuer {
     }
 
     function sendResults($game, $last_user, $last_user_id, $last_score, $mode) {
+        echo $this->$game_results_folder . $game . ".txt";
         $file_content = file_get_contents($this->$game_results_folder . $game . ".txt") . $last_user_id . "||" . $last_user . "||" . $last_score;
         $pairs = explode("\n", $file_content);
         $map = [];
