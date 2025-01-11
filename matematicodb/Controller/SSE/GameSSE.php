@@ -14,7 +14,7 @@ function sendUpdatesFromQueue() {
         $waited += 5;
         $file_content = file_get_contents(ROOT_PATH . "/Controller/SSE/eventqueue.txt");
         if ($waited > 60) {
-            header("HTTP/1.1 204 No Updates");
+            header("HTTP/1.1 200 No Updates");
             exit;
         }
     }
