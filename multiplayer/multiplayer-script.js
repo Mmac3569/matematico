@@ -19,6 +19,14 @@ async function joinGame() {
         sse_source.onmessage = handleSSE;
         console.log(response_json);
         showParty(false, response_json);
+        let user = response_json.find(user => user.session_id === user_id);
+        if (user) {
+            console.log("Username for session_id " + session_id + ": " + user.username);
+            username = user.username;
+        } else {
+            console.log("Username for session_id " + session_id + " not found.");
+            alert("Přihlášení není platné");
+        }
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
     }
@@ -76,8 +84,6 @@ function speedChanged(new_speed) {
 async function showParty(master, players) {
     if(master) {
         username = players;
-    } else {
-        username = players[0]["username"];
     }
     let response = await fetch("https://matematico.great-site.net/multiplayer/party.html?v=" + Date.now());
     if(response.ok) {
