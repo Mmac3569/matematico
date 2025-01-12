@@ -12,7 +12,8 @@ class EventQueuer {
     }
 
     function putResult($from, $user_id, $game, $score) {
-        echo $this->$game_results_folder . $game . ".txt";
+        echo $this->$game_results_folder;
+        echo $this->$game_results_folder . strval($game) . ".txt";
         if(!file_exists($this->$game_results_folder . $game . ".txt")) {
             file_put_contents($this->$game_results_folder . $game . ".txt", "");
         }
@@ -20,7 +21,8 @@ class EventQueuer {
     }
 
     function sendResults($game, $last_user, $last_user_id, $last_score, $mode) {
-        echo $this->$game_results_folder . $game . ".txt";
+        echo $this->$game_results_folder;
+        echo $this->$game_results_folder . strval($game) . ".txt";
         $file_content = file_get_contents($this->$game_results_folder . $game . ".txt") . $last_user_id . "||" . $last_user . "||" . $last_score;
         $pairs = explode("\n", $file_content);
         $map = [];

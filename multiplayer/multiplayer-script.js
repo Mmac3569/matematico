@@ -49,6 +49,7 @@ async function createNewGame() {
 }
 
 function startGame() {
+    document.getElementById("start").disabled = true;
     let game_for_zero = document.getElementById("game-for-zero").checked;
     if(game_for_zero) {
         fetch(`https://matematico.great-site.net/matematicodb/index.php/multiplayer/start?code=x${game_code}x&speed=${speed}&mode=game_for_zero`);
