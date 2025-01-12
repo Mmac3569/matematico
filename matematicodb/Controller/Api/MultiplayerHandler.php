@@ -75,8 +75,9 @@ class MultiplayerHandler {
         $db_query = $database->select("SELECT `session_id` FROM `users` WHERE `in_game`='" . $game_id . "'");
         require_once ROOT_PATH . "/Controller/SSE/EventQueuer.php";
         $sse = new EventQueuer();
+        $numbers = $sse->generateNumbers();
         for ($i = 0; $i < count($db_query); $i++) {
-            $sse->queueStartUpdate($db_query[$i]["session_id"], $speed, $mode);
+            $sse->queueStartUpdate($db_query[$i]["session_id"], $speed, $mode, $numbers);
         }
         header("HTTP/1.1 200 OK");
         exit;

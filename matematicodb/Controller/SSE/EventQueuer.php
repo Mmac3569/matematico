@@ -7,8 +7,8 @@ class EventQueuer {
         file_put_contents($this->eventqueue_file_path, $to . "||PlayerUpdate||" . $username . "||" . $type . "\n###\n", FILE_APPEND | LOCK_EX);
     }
     
-    function queueStartUpdate($to, $speed, $mode) {
-        file_put_contents($this->eventqueue_file_path, $to . "||StartUpdate||" . $speed . "||" . $mode . "||" . implode(",", $this->generateNumbers()) . "\n###\n", FILE_APPEND | LOCK_EX);
+    function queueStartUpdate($to, $speed, $mode, $numbers) {
+        file_put_contents($this->eventqueue_file_path, $to . "||StartUpdate||" . $speed . "||" . $mode . "||" . implode(",", $numbers) . "\n###\n", FILE_APPEND | LOCK_EX);
     }
 
     function putResult($from, $user_id, $game, $score) {
