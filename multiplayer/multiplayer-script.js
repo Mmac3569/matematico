@@ -18,12 +18,15 @@ async function joinGame() {
         sse_source = new EventSource("https://matematico.great-site.net/matematicodb/Controller/SSE/GameSSE.php?username=" + user_id);
         sse_source.onmessage = handleSSE;
         console.log(response_json);
-        showParty(false, response_json);
         for(let i = 0; i < response_json.length; i++) {
+            console.log(response_json[i]);
+            console.log(response_json[i]["session_id"]);
+            console.log(user_id);
             if (response_json[i]["session_id"] == user_id) {
                 username = response_json[i]["username"];
             }
         }
+        showParty(false, response_json);
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
     }
