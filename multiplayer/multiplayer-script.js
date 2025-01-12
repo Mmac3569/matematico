@@ -19,13 +19,10 @@ async function joinGame() {
         sse_source.onmessage = handleSSE;
         console.log(response_json);
         showParty(false, response_json);
-        let user = response_json.find(user => user.session_id === user_id);
-        if (user) {
-            console.log("Username for session_id " + user_id + ": " + user.username);
-            username = user.username;
-        } else {
-            console.log("Username for session_id " + user_id + " not found.");
-            alert("Přihlášení není platné");
+        for(let i = 0; i < response_json.length; i++) {
+            if (response_json[i]["session_id"] == user_id) {
+                username = response_json[i]["username"];
+            }
         }
     } else {
         alert("Kód " + code_input + " neexistuje nebo přihlášení není platné");
