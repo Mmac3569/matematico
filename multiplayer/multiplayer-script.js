@@ -21,10 +21,10 @@ async function joinGame() {
         showParty(false, response_json);
         let user = response_json.find(user => user.session_id === user_id);
         if (user) {
-            console.log("Username for session_id " + session_id + ": " + user.username);
+            console.log("Username for session_id " + user_id + ": " + user.username);
             username = user.username;
         } else {
-            console.log("Username for session_id " + session_id + " not found.");
+            console.log("Username for session_id " + user_id + " not found.");
             alert("Přihlášení není platné");
         }
     } else {
