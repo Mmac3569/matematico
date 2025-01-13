@@ -42,9 +42,15 @@ class EventQueuer {
     }
 
     function generateNumbers() {
-        $numbers = [25];
-        for ($i = 0; $i < 25; $i++) {
-            $numbers[$i] = rand(1, 13);
+        $numbers = [];
+        $counts = array_fill(1, 13, 0); // Pole pro sledování počtu výskytů čísel od 1 do 13
+
+        while (count($numbers) < 25) {
+            $num = rand(1, 13);
+            if ($counts[$num] < 4) {
+                $numbers[] = $num;
+                $counts[$num]++;
+            }
         }
         return $numbers;
     }
