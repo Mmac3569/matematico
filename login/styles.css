@@ -1,3 +1,34 @@
+header {
+    background-color: #00aaff;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+button {
+    background-color: #00aaff;
+    border: none;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
 #loginBt {
     margin-left: 50px;
+}
+
+#flex-container {
+    margin-top: 10%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+body {
+    margin: 0 0 0 0;
 }

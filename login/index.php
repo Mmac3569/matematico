@@ -7,16 +7,28 @@
     <link rel="stylesheet" href="styles.css?v=<?php echo filemtime("styles.css") ?>">
     <script src="login-script.js?v=<?php echo filemtime("login-script.js") ?>"></script>
 </head>
+
 <body>
-    <form>
+    <header>
+        <h1>Matematico - Přihlášení</h1>
+    </header>
+    <nav>
+        <a href="matematico.great-site.net"><h2 id="back">zpět</h2></a>
+        <a href="#login-header"><h2 id="multiplayer">přihlášení</h2></a>
+        <a href="#register-header"><h2 id="multiplayer">registrace</h2></a>
+    </nav>
+    <div id="flex-container">
+        <h2 id="login-header">Přihlášení</h2>
         <input id="username_in" name="username" type="text" placeholder="username" autocomplete="username"><br>
         <input id="password_in" name="password" type="password" placeholder="password" autocomplete="current-password"><br>
-        <input type="button" value="login" onclick="loginBtClick()"><br>
-        <p>Nemáte účet? Zaregistrujte se zde!</p><br>
-        <input id="new_username_in" name="username" type="text" placeholder="new username" autocomplete="username"><br>
+        <button id="login-bt" onclick="loginBtClick()">Přihlásit se</button><br>
+        <br><br><br><br><br>
+
+        <h2 id="register-header">Registrace</h2>
+        <input id="new_username_in" name="username" type="text" placeholder="new username"><br>
         <input id="new_password_in" name= "password" type="password" placeholder="new password" autocomplete="new-password"><br>
-        <input type="button" value="register" onclick="registerBtClick()">
+        <button onclick="registerBtClick()">Zaregistrovat se</button><br>
         <p style="color: red;">Stránka zatím není příliš zabezpečená, volte prosím heslo které nepoužíváte do jiných účtů!!!</p>
-    </form>
+    </div>
 </body>
 </html>
