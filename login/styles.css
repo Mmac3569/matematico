@@ -25,10 +25,33 @@ button {
 #flex-container {
     margin-top: 10%;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
+    flex-flow: column wrap;
+    justify-content: center;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 body {
     margin: 0 0 0 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+#login {
+    margin-left: 150px;
+    color: black;
+}
+
+#register {
+    margin-left: 150px;
+    color: black;
+}
+
+nav {
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }

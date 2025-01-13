@@ -14,8 +14,8 @@
     </header>
     <nav>
         <a href="matematico.great-site.net"><h2 id="back">zpět</h2></a>
-        <a href="#login-header"><h2 id="multiplayer">přihlášení</h2></a>
-        <a href="#register-header"><h2 id="multiplayer">registrace</h2></a>
+        <a href="#login-header"><h2 id="login">přihlášení</h2></a>
+        <a href="#register-header"><h2 id="register">registrace</h2></a>
     </nav>
     <div id="flex-container">
         <h2 id="login-header">Přihlášení</h2>
