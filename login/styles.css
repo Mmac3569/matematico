@@ -39,6 +39,10 @@ a {
     text-decoration: none;
 }
 
+#back {
+    color: black;
+}
+
 #login {
     margin-left: 150px;
     color: black;
