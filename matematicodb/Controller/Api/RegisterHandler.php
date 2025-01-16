@@ -12,7 +12,7 @@ class RegisterHandler {
             header("HTTP/1.1 300 Failed");
             echo json_encode("fail");
         } else {
-            $database->executeStatement("INSERT INTO `users` (`ID`, `username`, `password`, `high-score`) VALUES (NULL, '" . $username . "', '" . $password . "', '0')");
+            $database->executeStatement("INSERT INTO `users` (`ID`, `username`, `password`) VALUES (NULL, '" . $username . "', '" . $password . "')");
             $database->executeStatement("INSERT INTO `scores` (`username`) VALUES ('" . $username . "')");
             header("HTTP/1.1 200 OK");
             echo json_encode("success");
